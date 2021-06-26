@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class=" responsive" lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="theme-color" content="#171a21">
+	<title>Image Cropper</title>
+	<link rel="shortcut icon" href="https://steamcommunity.com/favicon.ico" type="image/x-icon">
+
+	<script src="./steam/jquery-1.11.1.min.js"></script>
+	<script src="./steam/download.js"></script>
+
+	<link rel="stylesheet" href="./steam/globalv2.css">
+	<link rel="stylesheet" href="./steam/motiva_sans.css">
+	<link rel="stylesheet" href="./steam/profilev2.css">
+	<link rel="stylesheet" href="./steam/shared_global.css">
+	<link rel="stylesheet" href="./steam/shared_responsive.css">
+
+	<style>
+		.bigBox {
+			position: absolute;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			width: 100%;
+		}
+
+		.bigBox img {
+			width: 120%;
+		}
+
+		.smallBox {
+			overflow: hidden;
+			position: absolute;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		.smallBox img {
+			position: absolute;
+			right: 2px;
+			height: 100%;
+		}
+
+		button {
+			width: 85px;
+			height: fit-content;
+		}
+	</style>
+
+</head>
+
+<body class="flat_page profile_page has_profile_background CosmicTheme responsive_page" style="">
+
+	<div class="responsive_page_frame with_header">
+		<div class="responsive_page_template_content">
+
+			<div class="no_header profile_page has_profile_background  full_width_background"
+				style="background-image: url( &#39;https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/991980/07e916b4a692ede3a52f4ba1dfb478a3cf81a5b6.jpg&#39; );">
+				<div class="profile_header_bg">
+					<div class="profile_header_bg_texture">
+						<div class="profile_header">
+							<div class="profile_header_content">
+								<div class="profile_header_centered_persona">
+									<div class="persona_name" style="font-size: 24px;">
+										<span class="actual_persona_name">P1ayer</span>
+									</div>
+
+									<div class="header_real_name ellipsis">
+										<bdi>(ง'̀-'́)ง</bdi>
+										&nbsp;
+										<img class="profile_flag" src="./steam/mk.gif">
+										Macedonia, The Former Yugoslav Republic of </div>
+								</div>
+
+								<div class="playerAvatar profile_header_size online" data-miniprofile="105021511">
+									<div class="playerAvatarAutoSizeInner">
+										<div class="profile_avatar_frame">
+											<img src="./steam/frame.png">
+										</div>
+										<img src="./steam/profile.jpg">
+									</div>
+								</div>
+								<div class="profile_header_summary">
+									<div class="persona_name persona_name_spacer" style="font-size: 24px;">
+										<span class="actual_persona_name">&nbsp;</span>
+									</div>
+									<div class="header_real_name_spacer">&nbsp;</div>
+									<div class="profile_summary noexpand">
+										<!-- *********************** Input Area *********************** -->
+
+										<h3>Select image:</h3><br>
+										<input type="file" name="" id="selectedImage">
+									</div>
+									<div class="profile_summary_footer" style="display: none;">
+										<span class="whiteLink">View more info</span>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="profile_content has_profile_background">
+					<div class="profile_content_inner">
+
+						<div class="profile_rightcol" style="color:yellow">
+							<h1>Resolutions:</h1><br>
+							<h2>Original picture</h2>
+							<h2 id="originalSize">-</h2><br>
+							<h2>Big picture</h2>
+							<h2 id="bigSize">-</h2><br>
+							<h2>Small picture</h2>
+							<h2 id="smallSize">-</h2>
+							<h4 id="leftOffset"></h4>
+							<br>
+							<label>Bottom right space</label><input type="checkbox" id="toggleSmall"
+								onclick="toggleSmall()">
+							<br><br>
+							<button onclick="savePics(1)">Save big picture</button>
+							<button onclick="savePics(0)">Save small picture</button><br><br>
+							<div id="gifsicleArea" style="display: none;">
+								<textarea id="gifsicleCmds" onmouseover="selectCmds()" cols="30" rows="6"
+									readonly style="resize: none; width: 96%;">Hello there mate!</textarea><br>
+								<button onclick="getCmd(1)">Get cmd for big picture</button>
+								<button onclick="getCmd(2)">Get cmd for small picture</button>
+								<button onclick="getCmd(3)">Get cmd for both picture</button>
+								<p style="color: red; font-weight: bold;">
+									Unless your gif is a static image, you CAN'T use the buttons above to crop a gif
+									automatically!!
+								</p>
+							</div>
+							<p style="color: yellow;">
+								Make sure to read the guide if you need help or if you're confused what is shown on the
+								screen.
+								<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2489565868"
+									target="_blank" style="font-weight: bold; text-decoration: underline;">Link to the guide</a>
+							</p><br>
+						</div>
+					</div>
+
+					<div class="profile_leftcol">
+						<div class="profile_customization_area">
+							<div class="profile_customization myart">
+								<a class="profile_customization_editlink" href="#">
+									<span class="profile_customization_edit_icon"></span>
+									<span class="profile_customization_editlink_text">Edit or Change
+										Showcase</span>
+								</a>
+								<div class="profile_customization_header">Artwork Showcase</div>
+								<div class="profile_customization_block">
+									<div class="screenshot_showcase">
+										<div class="screenshot_showcase_primary showcase_slot ">
+											<!-- *********************************************************** -->
+											<a id="bigImgA" class="screenshot_showcase_screenshot modalContentLink "
+												href="#" data-appid="767" data-publishedfileid="2338473003"
+												style="width:508px; max-width: 508px;">
+												<div class="bigBox" style="display: none;">
+													<img id="bigBoxGif" src="" alt="">
+												</div>
+												<img width="100%" style="max-width: 506px;" src="./steam/1.jpg"
+													id="bigImg">
+											</a>
+											<!-- *********************************************************** -->
+											<div class="screenshot_showcase_itemname">
+												⠀ </div>
+											<div class="screenshot_showcase_stats">
+											</div>
+										</div>
+										<div class="screenshot_showcase_rightcol" id="rightSide">
+											<div class="screenshot_showcase_smallscreenshot showcase_slot ">
+												<a id="smallImgA"
+													class="screenshot_showcase_screenshot modalContentLink " href="#"
+													data-appid="767" data-publishedfileid="2338470435">
+													<div class="smallBox" style="display: none;">
+														<img id="smallBoxGif" src="" alt="">
+													</div>
+													<img width="100%" style="max-width: 100px;"
+														src="./steam/2.jpg" id="smallImg">
+
+												</a>
+											</div>
+											<a class="screenshot_showcase_smallscreenshot screenshot_count" href="#">
+												<div class="screenshot_showcase_screenshot">+N</div>
+											</a>
+										</div>
+										<div style="clear: both;"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="./steam/crop_script.js"></script>
+
+</html>
