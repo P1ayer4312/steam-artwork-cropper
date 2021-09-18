@@ -1,16 +1,18 @@
-// DOM elements and global variables
+﻿// DOM elements and global variables
 // It can probably be more optimized and refactored, but I'm too lazy to do that :)
-var _URL = window.URL || window.webkitURL;
-var file, img, imgWidth, imgHeight, smallTest, commands, status = 0;
+var file, img, imgWidth, imgHeight, smallTest, bigTest, commands, status = 0;
 var steamHeight, steamBigWidth, steamSmallWidth;
+var _URL = window.URL || window.webkitURL;
 var bigBox = document.querySelector('.bigBox');
 var smallBox = document.querySelector('.smallBox');
 var selectedImage = document.getElementById('selectedImage');
 var smallSize = document.getElementById('smallSize');
 var bigSize = document.getElementById('bigSize');
 var originalSize = document.getElementById('originalSize');
+
 var bigImg = document.getElementById('bigImg');
 var smallImg = document.getElementById('smallImg');
+
 var bigCanvas = document.createElement('canvas');
 var smallCanvas = document.createElement('canvas');
 var gifsicleCmds = document.getElementById('gifsicleCmds');
@@ -99,6 +101,7 @@ function testSize() {
 
         // When it's done testing, display a preview of the original image and show
         // the resolutions for the pictures on the right side
+        bigTest = steamBigWidth;
         bigImg.onload = null;
         bCtx.drawImage(img, 0, 0, steamBigWidth, imgHeight, 0, 0, steamBigWidth, imgHeight);
         sCtx.drawImage(img, imgWidth - steamSmallWidth, 0, steamSmallWidth, imgHeight, 0, 0, steamSmallWidth, imgHeight);
@@ -139,10 +142,6 @@ function savePics(num) {
     else download(smallCanvas.toDataURL(file.type, 1), `${time}-2-${file.name}`, file.type);
 }
 
-
-
-
-
 function rightSide() {
 
     // This function is used for creating a hole for the '+N' element if the user
@@ -151,19 +150,29 @@ function rightSide() {
     var rightSizeComputed = Math.round(
         parseFloat(getComputedStyle(document.getElementById('rightSide')).height.replace('px', ''))) - 11;
 
-    if (bigImgComputed < rightSizeComputed) {
+    if (bigImgComputed < rightSizeComputed && bigTest === steamBigWidth) {
         smallTest--;
         smallCanvas.height = smallTest;
         sCtx.fillStyle = "#FF0000";
         sCtx.fillRect(0, 0, steamSmallWidth, smallTest);
         smallImg.src = smallCanvas.toDataURL();
-    } else {
+    } else if (bigImgComputed !== rightSizeComputed) {
+        console.log('hi')
+        bigTest++;
+        bigCanvas.width = bigTest;
+        bCtx.fillStyle = "#FF0000";
+        bCtx.fillRect(0, 0, bigTest, imgHeight);
+        bigImg.src = bigCanvas.toDataURL();
+
+    }
+    else {
         smallImg.onload = null;
         smallSize.innerText = `${steamSmallWidth}x${smallTest}`;
         sCtx.drawImage(img, imgWidth - steamSmallWidth, 0, steamSmallWidth, imgHeight, 0, 0, steamSmallWidth, imgHeight);
         smallImg.src = smallCanvas.toDataURL(file.type, 1);
         if (file.type == "image/gif") gifsicleCommands(smallTest);
     }
+    console.log(bigImgComputed, rightSizeComputed)
 }
 
 function toggleSmall() {
@@ -183,9 +192,9 @@ function toggleSmall() {
             rightSide();
         } else {
             smallCanvas.height = smallTest;
-            sCtx.drawImage(img, imgWidth - steamSmallWidth, 0, steamSmallWidth, imgHeight,
-                0, 0, steamSmallWidth, imgHeight);
+            sCtx.drawImage(img, imgWidth - steamSmallWidth, 0, steamSmallWidth, imgHeight, 0, 0, steamSmallWidth, imgHeight);
             smallImg.src = smallCanvas.toDataURL();
+
             if (file.type == "image/gif") gifsicleCommands(smallTest);
         }
         smallSize.innerText = `${steamSmallWidth}x${smallTest}`;
@@ -194,6 +203,11 @@ function toggleSmall() {
         sCtx.drawImage(img, imgWidth - steamSmallWidth, 0, steamSmallWidth, imgHeight, 0, 0, steamSmallWidth,
             imgHeight);
         smallImg.src = smallCanvas.toDataURL();
+
+        
+
+
+
         smallSize.innerText = `${steamSmallWidth}x${imgHeight}`;
         if (file.type == "image/gif") gifsicleCommands(imgHeight);
     }
