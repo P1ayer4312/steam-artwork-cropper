@@ -47,9 +47,10 @@
 			height: 100%;
 		}
 
-		button {
+		button.download {
 			width: 100%;
 			height: 40px;
+			margin-top: 15px;
 		}
 
 		.cropLine {
@@ -59,6 +60,25 @@
 			background-color: black;
 			top: 0;
 			/* opacity: 50%; */
+		}
+
+		.reminder {
+			color: orangered;
+			font-weight: bolder;
+			border: 1px solid orangered;
+			padding: 5px 5px;
+		}
+
+		#drag-elem {
+			opacity: 50%;
+			width: 630px;
+			height: 122px;
+			background-color: orange;
+			position: relative;
+			left: 0px;
+			top: -906px;
+			border-top: 2px dashed black;
+			border-bottom: 2px dashed black;
 		}
 	</style>
 
@@ -71,7 +91,7 @@
 			<div class="content">
 				<div class="logo">
 					<span id="logo_holder">
-						<a href="https://store.steampowered.com/">
+						<a href="https://store.steampowered.com/" target="_blank">
 							<img src="https://community.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016"
 								width="176" height="44">
 						</a>
@@ -81,7 +101,8 @@
 				<div class="supernav_container">
 					<a class="menuitem supernav" href="#artwork" id="artworkLink">ARTWORK SHOWCASE</a>
 					<a class="menuitem supernav" href="#workshop" id="workshopLink">WORKSHOP SHOWCASE</a>
-					<a class="menuitem supernav" target="_blank" href="https://steamcommunity.com/profiles/76561198065287239">P1ayer</a>
+					<a class="menuitem supernav" target="_blank"
+						href="https://steamcommunity.com/profiles/76561198065287239">P1ayer</a>
 
 				</div>
 			</div>
@@ -143,7 +164,7 @@
 						<h1>Resolutions:</h1><br>
 						<h2>Original picture</h2>
 						<h2 id="originalSize">-</h2><br>
-						
+
 						<div id="artworkInfo" style="display: none;">
 							<h2>Big picture</h2>
 							<h2 id="bigSize">-</h2><br>
@@ -153,19 +174,28 @@
 							<br>
 							<label for="toggleSmall">Bottom right space</label><input type="checkbox" id="toggleSmall"
 								onclick="toggleSmall()">
-							<br><br>
-							<button onclick="artworkShowcase.downloadImages()">Download images</button>
+
+							<p class="reminder" style="text-align: justify;">
+								Don't forget to maximise your browser window. This method relies on the Steam profile
+								style.
+							</p>
+
+							<button class="download" onclick="artworkShowcase.downloadImages()">Download images</button>
 						</div>
-						
+
 						<div id="worshopInfo" style="display: none;">
 							<br><label for="togglePreview">Show preview for slider</label>
 							<input type="checkbox" id="togglePreview" onclick="workshopShowcase.togglePreview()">
-							
+
 							<br><br><label for="toggleSlider">Disable slider</label>
 							<input type="checkbox" id="toggleSlider" onclick="workshopShowcase.toggleSlider()">
-							<br><p style="color: orangered;	font-weight: bold;">Don't forget to check "Disable slider" if you want to crop long images!</p>
-							<br><button onclick="savePics(1)">Download images</button>
-							
+							<br>
+							<br><button onclick="workshopShowcase.resetSlider()">Reset slider</button>
+							<p class="reminder">
+								Don't forget to check "Disable slider" if you want to crop the whole image.
+							</p>
+							<button class="download" onclick="workshopShowcase.downloadImages()">Download images</button>
+
 						</div>
 
 						<p style="color: yellow;">
@@ -191,35 +221,32 @@
 								<div class="screenshot_showcase">
 									<div class="screenshot_showcase_primary showcase_slot ">
 										<!-- *********************************************************** -->
-										<a id="bigImgA" class="screenshot_showcase_screenshot modalContentLink "
-											href="#" data-appid="767" data-publishedfileid="2338473003"
+										<div id="bigImgA" class="screenshot_showcase_screenshot modalContentLink "
 											style="width:508px; max-width: 508px;">
 											<div class="bigBox" style="display: none;">
 												<img id="bigBoxGif" src="" alt="">
 											</div>
 											<img width="100%" style="max-width: 506px;" src="./steam/1.jpg" id="bigImg">
-										</a>
-										<!-- *********************************************************** -->
-										<div class="screenshot_showcase_itemname">
-											⠀ </div>
-										<div class="screenshot_showcase_stats">
 										</div>
+										<!-- *********************************************************** -->
+										<div class="screenshot_showcase_itemname"></div>
+										<div class="screenshot_showcase_stats"></div>
 									</div>
 									<div class="screenshot_showcase_rightcol" id="rightSide">
 										<div class="screenshot_showcase_smallscreenshot showcase_slot ">
-											<a id="smallImgA" class="screenshot_showcase_screenshot modalContentLink "
-												href="#" data-appid="767" data-publishedfileid="2338470435">
+											<div id="smallImgA"
+												class="screenshot_showcase_screenshot modalContentLink ">
 												<div class="smallBox" style="display: none;">
-													<img id="smallBoxGif" src="" alt="">
+													<img id="smallBoxGif" src="">
 												</div>
 												<img width="100%" style="max-width: 100px;" src="./steam/2.jpg"
 													id="smallImg">
 
-											</a>
+											</div>
 										</div>
-										<a class="screenshot_showcase_smallscreenshot screenshot_count" href="#">
+										<div class="screenshot_showcase_smallscreenshot screenshot_count">
 											<div class="screenshot_showcase_screenshot">+N</div>
-										</a>
+										</div>
 									</div>
 									<div style="clear: both;"></div>
 								</div>
@@ -241,20 +268,17 @@
 									<div class="screenshot_showcase_primary single showcase_slot ">
 										<div id="preview-box" style="overflow: hidden;">
 											<!-- ############################################## -->
-											<a id="drag-container"
+											<div id="drag-container"
 												class="screenshot_showcase_screenshot modalContentLink ugc" href="#"
 												style="position: relative; left: 2px; max-width: 626px;">
 												<!-- src="https://steamuserimages-a.akamaihd.net/ugc/1660105490032142154/2E4E18B51E78C56C665388902C691AD083FFFF97/?imw=630&amp;&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=false"> -->
-												<img id="img-preview" style="width: 100%;"
-													src="./steam/nero.jpg">
+												<img id="img-preview" style="width: 100%;" src="./steam/nero.jpg">
 												<div style="left: 122px" class="cropLine"></div>
 												<div style="left: 248px" class="cropLine"></div>
 												<div style="right: 248px" class="cropLine"></div>
 												<div style="right: 122px" class="cropLine"></div>
-												<div id="drag-elem"
-													style="opacity: 50%; width: 630px; height: 122px; background-color: orange; position: relative; left: 0px; top: -906px;">
-												</div>
-											</a>
+												<div id="drag-elem"></div>
+											</div>
 										</div>
 										<div class="screenshot_showcase_itemname"></div>
 									</div>
@@ -268,13 +292,79 @@
 									<div style="clear: left;"></div>
 								</div>
 							</div>
+							<!-- #####################REMOVE_ME######################### -->
+							<div class="profile_customization_block">
+								<div class="myworkshop_showcase">
+									<div class="workshop_showcase_mutiitem_ctn">
+										<div class="workshop_showcase_multiitem showcase_slot ">
+											<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2206265793"
+												title="1" class="ugc" data-appid="480"
+												data-publishedfileid="2206265793">
+												<img class="workshop_showcase_item_image" id="1"
+													src="https://steamuserimages-a.akamaihd.net/ugc/1503593841082048016/E3F724BA475188509AFCA69F68484210CFB3246D/?imw=150&amp;imh=150&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true">
+											</a>
+										</div>
+									</div>
+									<div class="workshop_showcase_mutiitem_ctn">
+										<div class="workshop_showcase_multiitem showcase_slot ">
+											<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2206266729"
+												title="2" class="ugc" data-appid="480"
+												data-publishedfileid="2206266729">
+												<img class="workshop_showcase_item_image" id="2"
+													src="https://steamuserimages-a.akamaihd.net/ugc/1503593841082051650/40AA8B7EF4187032782BC095F9DD3FC32B8392F2/?imw=150&amp;imh=150&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true">
+											</a>
+										</div>
+									</div>
+									<div class="workshop_showcase_mutiitem_ctn">
+										<div class="workshop_showcase_multiitem showcase_slot ">
+											<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2207285545"
+												title="3" class="ugc" data-appid="480"
+												data-publishedfileid="2207285545">
+												<img class="workshop_showcase_item_image" id="3"
+													src="https://steamuserimages-a.akamaihd.net/ugc/1503593841086081616/BB3E8775D7902FB098DCC3B2507047F1EC34C3E9/?imw=150&amp;imh=150&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true">
+											</a>
+										</div>
+									</div>
+									<div class="workshop_showcase_mutiitem_ctn">
+										<div class="workshop_showcase_multiitem showcase_slot ">
+											<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2206267531"
+												title="4" class="ugc" data-appid="480"
+												data-publishedfileid="2206267531">
+												<img class="workshop_showcase_item_image" id="4"
+													src="https://steamuserimages-a.akamaihd.net/ugc/1503593841082054588/081E0E7B72F1B4EF6D9A34A1016E53B14FC41E17/?imw=150&amp;imh=150&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true">
+											</a>
+										</div>
+									</div>
+									<div class="workshop_showcase_mutiitem_ctn">
+										<div class="workshop_showcase_multiitem showcase_slot ">
+											<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2206267894"
+												title="5" class="ugc" data-appid="480"
+												data-publishedfileid="2206267894">
+												<img class="workshop_showcase_item_image" id="5"
+													src="https://steamuserimages-a.akamaihd.net/ugc/1503593841082055945/006C9E46B178162E8449F0416EFD45299E60DB92/?imw=150&amp;imh=150&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true">
+											</a>
+										</div>
+									</div>
+									<div style="clear: left;"></div>
+									<div class="showcase_stats_row showcase_content_bg">
+										<a class="showcase_stat"
+											href="https://steamcommunity.com/id/p1ayer4312_2/myworkshopfiles/">
+											<div class="value">5</div>
+											<div class="label">Submissions</div>
+										</a>
+										<div style="clear: left;"></div>
+									</div>
+								</div>
+							</div>
+							<!-- #####################REMOVE_ME######################### -->
 						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
+	<div id="test"></div>
 </body>
 <script src="./steam/js/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 <script src="./steam/js/jszip.min.js"></script>

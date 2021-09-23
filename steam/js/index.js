@@ -47,4 +47,9 @@ document.getElementById("artworkLink").onclick = () => {
     }
 }
 
-console.log('%cHello', 'color: red; background-image: url("steam/spaghetti.jpg"); width: 300px; height: 300px');
+// console.log('%cPowered by spaghetti', 
+//     `color: black;
+//     font-weight: bold;
+//     font-size: 20px;
+//     background-image: url("https://raw.githubusercontent.com/P1ayer4312/p1ayer4312.github.io/main/steam-crop/steam/spaghetti.gif"); 
+//     padding: 0 280px 245px 0`);
