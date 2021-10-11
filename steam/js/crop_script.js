@@ -170,7 +170,7 @@ function as_createGifs(zip, gifs, currentGif) {
                 zip.generateAsync({
                     type: "blob"
                 }).then(function (content) {
-                    download(content, `${inputImage.file.name}_${new Date().getTime()}.zip`);
+                    download(content, `${inputImage.file.name}_as_${new Date().getTime()}.zip`);
                     inputImage.setStatusMsg("Done");
                 });
             }
@@ -202,7 +202,7 @@ function as_createGifs(zip, gifs, currentGif) {
             frame.drawImage(background.canvas, artworkShowcase.leftOffset, 0, artworkShowcase.steamSmallWidth,
                 inputImage.height, 0, 0, artworkShowcase.steamSmallWidth, inputImage.height);
         }
-
+        
         gifjs.addFrame(frame.canvas, {
             delay: gifs[i].delay ? gifs[i].delay : gifs[1].delay
         });
@@ -354,8 +354,11 @@ class CustomCanvas {
         t.data.set(data);
         this.canvasCtx.putImageData(t, 0, 0);
     }
-    addCanvas = function (canvasElement, left, top) {
-        this.canvasCtx.drawImage(canvasElement, left, top);
+    addCanvas = function (canvasElement, left, top, width, height) {
+        if (width == undefined && height == undefined)
+            this.canvasCtx.drawImage(canvasElement, left, top);
+        else
+            this.canvasCtx.drawImage(canvasElement, left, top, width, height);
     }
     fillSolid = function (dx, dy) {
         this.canvasCtx.fillStyle = "black";
