@@ -1,0 +1,75 @@
+.bigBox {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.bigBox img {
+    width: 120%;
+}
+
+.smallBox {
+    overflow: hidden;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.smallBox img {
+    position: absolute;
+    right: 2px;
+    height: 100%;
+}
+
+button.download {
+    width: 100%;
+    height: 40px;
+    margin-top: 15px;
+}
+
+.cropLine {
+    position: absolute;
+    width: 4px;
+    height: 100%;
+    background-color: black;
+    top: 0;
+    /* opacity: 50%; */
+}
+
+.reminder {
+    color: orange;
+    font-weight: bolder;
+    border: 1px solid orange;
+    padding: 5px 5px;
+}
+
+.warning {
+    color: rgb(255, 55, 55);
+    font-weight: bolder;
+    border: 1px solid orangered;
+    padding: 5px 5px;
+}
+
+#drag-elem {
+    opacity: 50%;
+    width: 630px;
+    height: 122px;
+    background-color: orange;
+    position: relative;
+    left: 0px;
+    top: -906px;
+    border-top: 2px dashed black;
+    border-bottom: 2px dashed black;
+}
+
+#artworkTab {
+	cursor: pointer;
+}
+
+#workshopTab {
+	cursor: pointer;
+}
