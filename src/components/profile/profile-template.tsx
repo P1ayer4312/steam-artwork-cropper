@@ -1,4 +1,9 @@
+// Main component for the Steam profile
+
+import ImageHolder from "../../assets/ImageHolder";
 import ArtworkPanel from "../panel/artwork/artwork-panel";
+import WorkshopPanel from "../panel/workshop/workshop-panel";
+import ProfileHeader from "./profile-header/profile-header";
 
 export default function Profile() {
   return (
@@ -23,105 +28,7 @@ export default function Profile() {
             id="responsive_page_template_content"
           >
             <div className="no_header profile_page">
-              <div className="profile_header_bg">
-                <div className="profile_header_bg_texture">
-                  <div className="profile_header">
-                    <div className="profile_header_content">
-                      <div className="profile_header_centered_persona">
-                        <div
-                          className="persona_name"
-                          style={{ fontSize: "24px" }}
-                        >
-                          <span className="actual_persona_name">P1ayer</span>
-                        </div>
-
-                        <div className="header_real_name ellipsis">
-                          <bdi>(ง'̀-'́)ง</bdi>
-                          &nbsp;
-                          <img className="profile_flag" src="./static/mk.gif" />
-                          Macedonia, The Former Yugoslav Republic of
-                        </div>
-                      </div>
-
-                      <div className="playerAvatar profile_header_size online">
-                        <div className="playerAvatarAutoSizeInner">
-                          <div className="profile_avatar_frame">
-                            <img src="./static/c4de44e9433609dad43fef18d298f1ae58157a3d.png" />
-                          </div>
-                          <img src="./static/profile_img_full.jpg" />
-                        </div>
-                      </div>
-
-                      <div className="profile_header_badgeinfo">
-                        <div className="profile_header_badgeinfo_badge_area">
-                          <a className="persona_level_btn" href="#">
-                            <div className="persona_name persona_level">
-                              Level{" "}
-                              <div className="friendPlayerLevel lvl_100 lvl_plus_20">
-                                <span className="friendPlayerLevelNum">
-                                  120
-                                </span>
-                              </div>
-                            </div>
-                          </a>
-                          <div className="profile_header_badge">
-                            <a href="#" className="favorite_badge">
-                              <div className="favorite_badge_icon">
-                                <img
-                                  src="./static/steamyears11_54.png"
-                                  className="badge_icon small"
-                                />
-                              </div>
-                              <div className="favorite_badge_description">
-                                <div className="name ellipsis">
-                                  Years of Service
-                                </div>
-                                <div className="xp">550 XP</div>
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-                        <div className="profile_header_actions">
-                          <a className="btn_profile_action btn_medium" href="#">
-                            <span>Edit Profile</span>
-                          </a>
-                        </div>
-                      </div>
-
-                      <div className="profile_header_summary">
-                        <div
-                          className="persona_name persona_name_spacer"
-                          style={{ fontSize: "24px" }}
-                        >
-                          <span className="actual_persona_name">&nbsp;</span>
-                        </div>
-                        <div className="header_real_name_spacer">&nbsp;</div>
-                        <div className="profile_summary noexpand">
-                          <div className="bb_h3">
-                            <b>
-                              Trade Link:{" "}
-                              <a
-                                className="bb_link"
-                                href="#"
-                                target="_blank"
-                                rel=""
-                              >
-                                Click here
-                              </a>
-                            </b>
-                          </div>
-                        </div>
-                        <div
-                          className="profile_summary_footer"
-                          style={{ display: "none" }}
-                        >
-                          <span className="whiteLink">View more info</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ProfileHeader />
               <div className="profile_content">
                 <div className="profile_content_inner">
                   <div className="profile_rightcol">
@@ -133,9 +40,9 @@ export default function Profile() {
                       </div>
                       <div className="profile_ban_status">
                         <div className="profile_ban">
-                          1 VAC ban on record
+                          1 VAC ban on record{" "}
                           <span className="profile_ban_info">
-                            |
+                            |{" "}
                             <a
                               className="whiteLink"
                               href="#"
@@ -246,83 +153,7 @@ export default function Profile() {
 
                   <div className="profile_leftcol">
                     <div className="profile_customization_area">
-                      <div className="profile_customization">
-                        <div className="profile_customization_header">
-                          Workshop Showcase
-                        </div>
-                        <div className="myworkshop_showcase_header">
-                          <div className="playerAvatar online"></div>
-                          <a href="#" className="myworkshop_playerName">
-                            Your Workshop
-                          </a>
-                        </div>
-                        <div className="profile_customization_block">
-                          <div className="myworkshop_showcase">
-                            <div className="workshop_showcase_mutiitem_ctn">
-                              <div className="workshop_showcase_multiitem showcase_slot">
-                                <a href="#" title="1" className="">
-                                  <img
-                                    className="workshop_showcase_item_image"
-                                    src="./static/1633912160_1_squid.gif"
-                                  />
-                                </a>
-                              </div>
-                            </div>
-                            <div className="workshop_showcase_mutiitem_ctn">
-                              <div className="workshop_showcase_multiitem showcase_slot">
-                                <a href="#" title="2" className="">
-                                  <img
-                                    className="workshop_showcase_item_image"
-                                    src="./static/1633912160_2_squid.gif"
-                                  />
-                                </a>
-                              </div>
-                            </div>
-                            <div className="workshop_showcase_mutiitem_ctn">
-                              <div className="workshop_showcase_multiitem showcase_slot">
-                                <a href="#" title="3" className="">
-                                  <img
-                                    className="workshop_showcase_item_image"
-                                    src="./static/1633912161_3_squid.gif"
-                                  />
-                                </a>
-                              </div>
-                            </div>
-                            <div className="workshop_showcase_mutiitem_ctn">
-                              <div className="workshop_showcase_multiitem showcase_slot">
-                                <a href="#" title="4" className="">
-                                  <img
-                                    className="workshop_showcase_item_image"
-                                    src="./static/1633912161_4_squid.gif"
-                                  />
-                                </a>
-                              </div>
-                            </div>
-                            <div className="workshop_showcase_mutiitem_ctn">
-                              <div className="workshop_showcase_multiitem showcase_slot">
-                                <a href="#" title="5" className="">
-                                  <img
-                                    className="workshop_showcase_item_image"
-                                    src="./static/1633912163_5_squid.gif"
-                                  />
-                                </a>
-                              </div>
-                            </div>
-                            <div style={{ clear: "left" }}></div>
-                            <div className="showcase_stats_row showcase_content_bg">
-                              <a className="showcase_stat" href="#">
-                                <div className="value">5</div>
-                                <div className="label">Submissions</div>
-                              </a>
-                              <div className="showcase_stat">
-                                <div className="value">2</div>
-                                <div className="label">Followers</div>
-                              </div>
-                              <div style={{ clear: "left" }}></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <WorkshopPanel />
                       <ArtworkPanel />
                     </div>
 

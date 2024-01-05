@@ -1,13 +1,10 @@
+import ImageHolder from "../../../assets/ImageHolder";
+
 export default function ArtworkPanel() {
   return (
     <>
-      <div className="profile_customization myart">
-        <a className="profile_customization_editlink" href="#">
-          <span className="profile_customization_edit_icon"></span>
-          <span className="profile_customization_editlink_text">
-            Edit or Change Showcase
-          </span>
-        </a>
+      {/* className="profile_customization myart" */}
+      <div className="profile_customization">
         <div className="profile_customization_header">Artwork Showcase</div>
 
         <div className="profile_customization_block">
@@ -20,7 +17,7 @@ export default function ArtworkPanel() {
                 <img
                   width="100%"
                   style={{ maxWidth: "288px" }}
-                  src="./static/1.jpg"
+                  src={ImageHolder.ArtworkPrimary}
                 />
               </a>
               <div className="screenshot_showcase_itemname">random</div>
@@ -35,7 +32,7 @@ export default function ArtworkPanel() {
                   <img
                     width="100%"
                     style={{ maxWidth: "100px" }}
-                    src="./static/2.jpg"
+                    src={ImageHolder.ArtworkRightCol}
                   />
                 </a>
               </div>
@@ -47,7 +44,7 @@ export default function ArtworkPanel() {
                   <img
                     width="100%"
                     style={{ maxWidth: "100px" }}
-                    src="./static/3.jpg"
+                    src={ImageHolder.ArtworkRightCol2}
                   />
                 </a>
               </div>
@@ -59,7 +56,7 @@ export default function ArtworkPanel() {
                   <img
                     width="100%"
                     style={{ maxWidth: "100px" }}
-                    src="./static/4.jpg"
+                    src={ImageHolder.ArtworkRightCol3}
                   />
                 </a>
               </div>
