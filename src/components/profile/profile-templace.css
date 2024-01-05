@@ -1,1 +1,59 @@
 /* Values that override or extend present styles */
+
+* {
+  border-radius: unset !important;
+}
+
+div.profile_page {
+  background-attachment: fixed;
+}
+
+/* Override color values to use the OG ones */
+body.SteamGreenTheme {
+  --gradient-background: #4d5744;
+  --dark-green-background: #3d4638;
+  --dark-slider-background: #1f1f1d;
+  --olive-green: #948930;
+  --light-gray: #848f7e;
+  --white: #ebebeb;
+}
+
+/* Disable profile gradient*/
+div.profile_content,
+div.profile_header_bg_texture {
+  background: var(--gradient-background);
+}
+
+/* Set dark background color */
+div.profile_header_badge,
+div.profile_rightcol,
+div.profile_customization {
+  background: var(--dark-green-background);
+}
+
+/* Set olive green background */
+div.profile_customization_header {
+  background: var(--olive-green);
+}
+
+/* Border outlines */
+div.profile_header_bg_texture {
+  border: 1px outset var(--light-gray);
+  border-bottom: unset;
+}
+div.profile_content {
+  border: 1px outset var(--light-gray);
+  border-top: unset;
+}
+div.profile_header_badge,
+div.profile_rightcol,
+div.profile_customization_block {
+  border: 1px inset var(--light-gray);
+}
+
+/* Decrease profile content padding and add border around it */
+div.profile_content_border {
+  padding: 7px 7px;
+  margin: 0 -7px;
+  border: 1px outset var(--light-gray);
+}

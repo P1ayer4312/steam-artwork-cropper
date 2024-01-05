@@ -4,7 +4,7 @@ export default function ArtworkPanel() {
   return (
     <>
       {/* className="profile_customization myart" */}
-      <div className="profile_customization">
+      <div className="profile_customization myart">
         <div className="profile_customization_header">Artwork Showcase</div>
 
         <div className="profile_customization_block">
