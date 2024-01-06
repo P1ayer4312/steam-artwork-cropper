@@ -27,7 +27,15 @@ export default function ProfileContentNavButtons() {
           <div className="profile_content_nav_clear"></div>
         </div>
 
-        <div>status ?</div>
+        <div
+          className={`profile_content_nav_button ${
+            activeIndex === 1 ? "profile_content_nav_button_active" : ""
+          }`}
+          onClick={() => setActiveIndex(1)}
+        >
+          <span>Workshop Showcase</span>
+          <div className="profile_content_nav_clear"></div>
+        </div>
       </div>
     </>
   );

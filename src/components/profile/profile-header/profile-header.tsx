@@ -54,11 +54,11 @@ export default function ProfileHeader() {
                     </a>
                   </div>
                 </div>
-                <div className="profile_header_actions">
+                {/* <div className="profile_header_actions">
                   <a className="btn_profile_action btn_medium" href="#">
                     <span>Edit Profile</span>
                   </a>
-                </div>
+                </div> */}
               </div>
 
               <ProfileHeaderSummary />

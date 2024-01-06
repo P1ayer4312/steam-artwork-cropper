@@ -2,6 +2,8 @@
 
 * {
   border-radius: unset !important;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 div.profile_page {
@@ -61,5 +63,4 @@ div.profile_content_border {
 /* Remove extra space from summary */
 div.profile_summary.noexpand {
   height: 100px;
-  /* background-color: red; */
 }

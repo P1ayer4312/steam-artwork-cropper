@@ -1,0 +1,23 @@
+.input-image-header {
+  color: var(--olive-green);
+  font-size: medium;
+  margin: 8px 0;
+}
+
+.input-image-box {
+  background-color: var(--dark-green-background);
+  border: 1px inset var(--light-gray);
+  width: 350px;
+  padding: 12px 12px;
+}
+
+.input-image-name {
+  padding-left: 12px;
+  color: var(--white);
+  display: inline-block;
+  width: 250px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: text-bottom;
+}
