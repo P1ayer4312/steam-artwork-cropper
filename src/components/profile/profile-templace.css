@@ -57,3 +57,9 @@ div.profile_content_border {
   margin: 0 -7px;
   border: 1px outset var(--light-gray);
 }
+
+/* Remove extra space from summary */
+div.profile_summary.noexpand {
+  height: 100px;
+  /* background-color: red; */
+}

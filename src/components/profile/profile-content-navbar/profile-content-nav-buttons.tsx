@@ -26,6 +26,8 @@ export default function ProfileContentNavButtons() {
           <span>Workshop Showcase</span>
           <div className="profile_content_nav_clear"></div>
         </div>
+
+        <div>status ?</div>
       </div>
     </>
   );

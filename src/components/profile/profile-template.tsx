@@ -1,7 +1,7 @@
 // Main component for the Steam profile
 
 import ArtworkPanel from "../panel/artwork/artwork-panel";
-import WorkshopPanel from "../panel/workshop/workshop-panel";
+// import WorkshopPanel from "../panel/workshop/workshop-panel";
 import ProfileContentNavButtons from "./profile-content-navbar/profile-content-nav-buttons";
 import ProfileHeader from "./profile-header/profile-header";
 import "./profile-templace.css";

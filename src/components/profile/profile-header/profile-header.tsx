@@ -1,4 +1,5 @@
 import ImageHolder from "../../../assets/ImageHolder";
+import ProfileHeaderSummary from "./profile-header-summary/profile-header-summary";
 
 export default function ProfileHeader() {
   return (
@@ -60,31 +61,7 @@ export default function ProfileHeader() {
                 </div>
               </div>
 
-              <div className="profile_header_summary">
-                <div
-                  className="persona_name persona_name_spacer"
-                  style={{ fontSize: "24px" }}
-                >
-                  <span className="actual_persona_name">&nbsp;</span>
-                </div>
-                <div className="header_real_name_spacer">&nbsp;</div>
-                <div className="profile_summary noexpand">
-                  <div className="bb_h3">
-                    <b>
-                      Trade Link:{" "}
-                      <a className="bb_link" href="#" target="_blank" rel="">
-                        Click here
-                      </a>
-                    </b>
-                  </div>
-                </div>
-                <div
-                  className="profile_summary_footer"
-                  style={{ display: "none" }}
-                >
-                  <span className="whiteLink">View more info</span>
-                </div>
-              </div>
+              <ProfileHeaderSummary />
             </div>
           </div>
         </div>
