@@ -1,39 +1,42 @@
-import { useState } from "react";
 import "./profile-content-nav-buttons.css";
+import { useGlobalContext } from "../../../context/global-context/GlobalContext";
 
 export default function ProfileContentNavButtons() {
-  // TODO: Remove this and implement it properly
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const globalContext = useGlobalContext();
+  const activeTab = globalContext?.activeTab;
+  const status = globalContext?.status.value;
 
   return (
     <>
       <div className="profile_content_nav_button_wrapper">
         <div
           className={`profile_content_nav_button ${
-            activeIndex === 0 ? "profile_content_nav_button_active" : ""
+            activeTab?.value == "artwork"
+              ? "profile_content_nav_button_active"
+              : ""
           }`}
-          onClick={() => setActiveIndex(0)}
+          onClick={() => activeTab?.set("artwork")}
         >
           <span>Artwork Showcase</span>
           <div className="profile_content_nav_clear"></div>
         </div>
         <div
           className={`profile_content_nav_button ${
-            activeIndex === 1 ? "profile_content_nav_button_active" : ""
+            activeTab?.value == "workshop"
+              ? "profile_content_nav_button_active"
+              : ""
           }`}
-          onClick={() => setActiveIndex(1)}
+          onClick={() => activeTab?.set("workshop")}
         >
           <span>Workshop Showcase</span>
           <div className="profile_content_nav_clear"></div>
         </div>
 
         <div
-          className={`profile_content_nav_button ${
-            activeIndex === 1 ? "profile_content_nav_button_active" : ""
-          }`}
-          onClick={() => setActiveIndex(1)}
+          className={`profile_content_nav_button profile_content_nav_status`}
         >
-          <span>Workshop Showcase</span>
+          <span className="profile_content_nav_status_span">Status: </span>
+          <span>{status}</span>
           <div className="profile_content_nav_clear"></div>
         </div>
       </div>

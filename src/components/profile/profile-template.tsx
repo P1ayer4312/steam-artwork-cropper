@@ -1,12 +1,16 @@
 // Main component for the Steam profile
 
+import { useGlobalContext } from "../../context/global-context/GlobalContext";
 import ArtworkPanel from "../panel/artwork/artwork-panel";
-// import WorkshopPanel from "../panel/workshop/workshop-panel";
+import WorkshopPanel from "../panel/workshop/workshop-panel";
 import ProfileContentNavButtons from "./profile-content-navbar/profile-content-nav-buttons";
 import ProfileHeader from "./profile-header/profile-header";
 import "./profile-templace.css";
 
 export default function Profile() {
+  const globalContext = useGlobalContext();
+  const activeTab = globalContext?.activeTab.value;
+
   return (
     <>
       <div className="responsive_page_frame with_header">
@@ -159,8 +163,8 @@ export default function Profile() {
 
                     <div className="profile_leftcol">
                       <div className="profile_customization_area">
-                        {/* <WorkshopPanel /> */}
-                        <ArtworkPanel />
+                        {activeTab == "artwork" && <ArtworkPanel />}
+                        {activeTab == "workshop" && <WorkshopPanel />}
                       </div>
 
                       <div>
@@ -182,36 +186,21 @@ export default function Profile() {
                       </div>
 
                       <div className="profile_comment_area">
-                        <div
-                          className="commentthread_area"
-                          id="commentthread_Profile_76561198065287239_area"
-                        >
+                        <div className="commentthread_area">
                           <div className="commentthread_header">
-                            <div
-                              className="commentthread_paging has_view_all_link"
-                              id="commentthread_Profile_76561198065287239_pagecontrols"
-                            >
+                            <div className="commentthread_paging has_view_all_link">
                               <a
                                 className="commentthread_allcommentslink"
                                 href="#"
                               >
                                 View all
-                                <span id="commentthread_Profile_76561198065287239_totalcount">
-                                  27
-                                </span>
+                                <span>27</span>
                                 comments
                               </a>
-                              <a
-                                id="commentthread_Profile_76561198065287239_pagebtn_prev"
-                                href="#"
-                                className="pagebtn disabled"
-                              >
+                              <a href="#" className="pagebtn disabled">
                                 &lt;
                               </a>
-                              <span
-                                id="commentthread_Profile_76561198065287239_pagelinks"
-                                className="commentthread_pagelinks"
-                              >
+                              <span className="commentthread_pagelinks">
                                 <span className="commentthread_pagelink active">
                                   1
                                 </span>
@@ -228,10 +217,7 @@ export default function Profile() {
                                   5
                                 </span>
                               </span>
-                              <span
-                                id="commentthread_Profile_76561198065287239_pagedropdown"
-                                className="commentthread_pagedropdown"
-                              >
+                              <span className="commentthread_pagedropdown">
                                 <select>
                                   <option value="0">1</option>
                                   <option value="1">2</option>
@@ -240,11 +226,7 @@ export default function Profile() {
                                   <option value="4">5</option>
                                 </select>
                               </span>
-                              <a
-                                id="commentthread_Profile_76561198065287239_pagebtn_next"
-                                href="#"
-                                className="pagebtn"
-                              >
+                              <a href="#" className="pagebtn">
                                 &gt;
                               </a>
                             </div>
@@ -254,10 +236,7 @@ export default function Profile() {
                                   Comments
                                 </span>
                               </span>
-                              <div
-                                className="commentthread_subscribe_ctn checked"
-                                id="commentthread_Profile_76561198065287239_subscribe_checkbox"
-                              >
+                              <div className="commentthread_subscribe_ctn checked">
                                 <span className="commentthread_subscribe_checkbox">
                                   <span className="commentthread_subscribe_check"></span>
                                 </span>

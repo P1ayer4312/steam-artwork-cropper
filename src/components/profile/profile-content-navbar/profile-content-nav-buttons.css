@@ -1,7 +1,7 @@
 .profile_content_nav_button_wrapper {
-  /* border: 1px solid red; */
   height: 33px;
   margin-left: -7px;
+  margin-right: -8px;
   display: flex;
 }
 
@@ -34,6 +34,25 @@
   background-color: transparent;
 }
 
+.profile_content_nav_status {
+  cursor: unset;
+  margin-left: auto;
+  width: 370px;
+  border-bottom: 1px solid transparent;
+}
+
+.profile_content_nav_status_span {
+  color: var(--olive-green);
+}
+
 .profile_content_nav_button_active .profile_content_nav_clear {
   background-color: var(--gradient-background);
+}
+
+.profile_content_nav_status .profile_content_nav_clear {
+  background-color: var(--gradient-background);
+  border: 1px outset var(--light-gray);
+  border-top: unset;
+  border-bottom: unset;
+  left: -1px;
 }

@@ -15,7 +15,11 @@ export default function ProfileHeader() {
 
                 <div className="header_real_name ellipsis">
                   <bdi>(ง'̀-'́)ง</bdi>{" "}
-                  <img className="profile_flag" src={ImageHolder.CountryFlag} />{" "}
+                  <img
+                    className="profile_flag"
+                    src={ImageHolder.CountryFlag}
+                    alt=""
+                  />{" "}
                   Macedonia, The Former Yugoslav Republic of
                 </div>
               </div>
@@ -23,33 +27,39 @@ export default function ProfileHeader() {
               <div className="playerAvatar profile_header_size online">
                 <div className="playerAvatarAutoSizeInner">
                   <div className="profile_avatar_frame">
-                    <img src={ImageHolder.ProfileImageFrame} />
+                    <img alt="" src={ImageHolder.ProfileImageFrame} />
                   </div>
-                  <img src={ImageHolder.ProfileImageFull} />
+                  <img alt="" src={ImageHolder.ProfileImageFull} />
                 </div>
               </div>
 
               <div className="profile_header_badgeinfo">
                 <div className="profile_header_badgeinfo_badge_area">
-                  <a className="persona_level_btn" href="#">
+                  <span className="persona_level_btn">
                     <div className="persona_name persona_level">
                       Level{" "}
                       <div className="friendPlayerLevel lvl_100 lvl_plus_20">
                         <span className="friendPlayerLevelNum">120</span>
                       </div>
                     </div>
-                  </a>
+                  </span>
                   <div className="profile_header_badge">
-                    <a href="#" className="favorite_badge">
+                    <a
+                      target="_blank"
+                      rel="noopener"
+                      href="https://github.com/P1ayer4312/steam-artwork-cropper"
+                      className="favorite_badge"
+                    >
                       <div className="favorite_badge_icon">
                         <img
+                          alt=""
                           src={ImageHolder.BadgeIcon}
                           className="badge_icon small"
                         />
                       </div>
                       <div className="favorite_badge_description">
-                        <div className="name ellipsis">Years of Service</div>
-                        <div className="xp">550 XP</div>
+                        <div className="name ellipsis">GitHub</div>
+                        <div className="xp">500 XP</div>
                       </div>
                     </a>
                   </div>

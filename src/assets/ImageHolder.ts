@@ -1,7 +1,7 @@
 import ProfileImage from "./img/profile_img.jpg";
 import ProfileImageFull from "./img/profile_img_full.jpg";
 import ProfileImageFrame from "./img/profile_img_frame.png";
-import BadgeIcon from "./img/steamyears11_54.png";
+import BadgeIcon from "./img/github_logo.png";
 import CountryFlag from "./img/mk.gif";
 
 import WorkshopPlaceholder1 from "./img/1633912160_1_squid.gif";

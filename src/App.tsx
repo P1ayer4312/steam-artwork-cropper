@@ -8,12 +8,13 @@ import "./assets/css/profilev2.css";
 import "./assets/css/shared_global.css";
 import "./assets/css/shared_responsive.css";
 import ProfileTemplate from "./components/profile/profile-template";
+import { GlobalContextProvider } from "./context/global-context/GlobalContext";
 
 function App() {
   return (
-    <>
+    <GlobalContextProvider>
       <ProfileTemplate />
-    </>
+    </GlobalContextProvider>
   );
 }
 

@@ -7,9 +7,7 @@ export default function WorkshopPanel() {
         <div className="profile_customization_header">Workshop Showcase</div>
         <div className="myworkshop_showcase_header">
           <div className="playerAvatar online"></div>
-          <a href="#" className="myworkshop_playerName">
-            Your Workshop
-          </a>
+          <span className="myworkshop_playerName">Your Workshop</span>
         </div>
         <div className="profile_customization_block">
           <div className="myworkshop_showcase">
