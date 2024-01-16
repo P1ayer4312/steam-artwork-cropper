@@ -6,6 +6,12 @@
     "Lucida Sans", Arial, sans-serif;
 }
 
+#root {
+  position: relative;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
 div.profile_page {
   background-attachment: fixed;
 }
@@ -63,4 +69,10 @@ div.profile_content_border {
 /* Remove extra space from summary */
 div.profile_summary.noexpand {
   height: 100px;
+}
+
+.no-select {
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }

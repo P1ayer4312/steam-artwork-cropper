@@ -3,6 +3,7 @@ import ProfileImageFull from "./img/profile_img_full.jpg";
 import ProfileImageFrame from "./img/profile_img_frame.png";
 import BadgeIcon from "./img/github_logo.png";
 import CountryFlag from "./img/mk.gif";
+import SteamLogoDisconnect from "./img/steam-logo-disconnect.jpg";
 
 import WorkshopPlaceholder1 from "./img/1633912160_1_squid.gif";
 import WorkshopPlaceholder2 from "./img/1633912160_2_squid.gif";
@@ -32,6 +33,7 @@ const ImageHolder = {
   ArtworkRightCol,
   ArtworkRightCol2,
   ArtworkRightCol3,
+  SteamLogoDisconnect,
 };
 
 export default ImageHolder;

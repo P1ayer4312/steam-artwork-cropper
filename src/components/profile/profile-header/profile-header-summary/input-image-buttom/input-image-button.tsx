@@ -21,6 +21,8 @@ export default function InputImageButton() {
       });
 
       globalContext?.status.set("Measuring, please wait...");
+      // Load media on selected file change
+      globalContext?.panels.loadMedia();
     }
   }
 

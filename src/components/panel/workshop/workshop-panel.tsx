@@ -4,11 +4,12 @@ export default function WorkshopPanel() {
   return (
     <>
       <div className="profile_customization">
-        <div className="profile_customization_header">Workshop Showcase</div>
+        {/* Left commented out in case it's needed in the future */}
+        {/* <div className="profile_customization_header">Workshop Showcase</div>
         <div className="myworkshop_showcase_header">
           <div className="playerAvatar online"></div>
           <span className="myworkshop_playerName">Your Workshop</span>
-        </div>
+        </div> */}
         <div className="profile_customization_block">
           <div className="myworkshop_showcase">
             <div className="workshop_showcase_mutiitem_ctn">
@@ -61,7 +62,7 @@ export default function WorkshopPanel() {
                 </a>
               </div>
             </div>
-            <div style={{ clear: "left" }}></div>
+            {/* <div style={{ clear: "left" }}></div>
             <div className="showcase_stats_row showcase_content_bg">
               <a className="showcase_stat" href="#">
                 <div className="value">5</div>
@@ -72,7 +73,7 @@ export default function WorkshopPanel() {
                 <div className="label">Followers</div>
               </div>
               <div style={{ clear: "left" }}></div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import "./App.css";
 import "./assets/css/buttons.css";
 import "./assets/css/old_buttons.css";
 import "./assets/css/globalv2.css";
@@ -9,11 +8,14 @@ import "./assets/css/shared_global.css";
 import "./assets/css/shared_responsive.css";
 import ProfileTemplate from "./components/profile/profile-template";
 import { GlobalContextProvider } from "./context/global-context/GlobalContext";
+import SmallWindowDialog from "./components/dialog/small-window-dialog";
 
 function App() {
   return (
     <GlobalContextProvider>
-      <ProfileTemplate />
+      <SmallWindowDialog>
+        <ProfileTemplate />
+      </SmallWindowDialog>
     </GlobalContextProvider>
   );
 }

@@ -3,23 +3,19 @@ import ImageHolder from "../../../assets/ImageHolder";
 export default function ArtworkPanel() {
   return (
     <>
-      {/* className="profile_customization myart" */}
       <div className="profile_customization myart">
-        <div className="profile_customization_header">Artwork Showcase</div>
+        {/* <div className="profile_customization_header">Artwork Showcase</div> */}
 
         <div className="profile_customization_block">
           <div className="screenshot_showcase">
             <div className="screenshot_showcase_primary showcase_slot">
-              <a
-                className="screenshot_showcase_screenshot modalContentLink"
-                href="#"
-              >
+              <div className="screenshot_showcase_screenshot modalContentLink">
                 <img
                   width="100%"
-                  style={{ maxWidth: "288px" }}
                   src={ImageHolder.ArtworkPrimary}
+                  id="primaryImg"
                 />
-              </a>
+              </div>
               <div className="screenshot_showcase_itemname">random</div>
               <div className="screenshot_showcase_stats"></div>
             </div>
@@ -33,10 +29,11 @@ export default function ArtworkPanel() {
                     width="100%"
                     style={{ maxWidth: "100px" }}
                     src={ImageHolder.ArtworkRightCol}
+                    id="rightColImg"
                   />
                 </a>
               </div>
-              <div className="screenshot_showcase_smallscreenshot showcase_slot">
+              {/* <div className="screenshot_showcase_smallscreenshot showcase_slot">
                 <a
                   className="screenshot_showcase_screenshot modalContentLink"
                   href="#"
@@ -59,7 +56,7 @@ export default function ArtworkPanel() {
                     src={ImageHolder.ArtworkRightCol3}
                   />
                 </a>
-              </div>
+              </div> */}
               <a
                 className="screenshot_showcase_smallscreenshot screenshot_count"
                 href="#"
