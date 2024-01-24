@@ -1,6 +1,13 @@
-import ImageHolder from "../../../assets/ImageHolder";
+import { useEffect, useRef } from "react";
 
 export default function ArtworkPanel() {
+  const primaryImgRef = useRef<HTMLImageElement | null>(null);
+  const rightColImgRef = useRef<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    console.log("artwork panel");
+  });
+
   return (
     <>
       <div className="profile_customization myart">
@@ -10,11 +17,7 @@ export default function ArtworkPanel() {
           <div className="screenshot_showcase">
             <div className="screenshot_showcase_primary showcase_slot">
               <div className="screenshot_showcase_screenshot modalContentLink">
-                <img
-                  width="100%"
-                  src={ImageHolder.ArtworkPrimary}
-                  id="primaryImg"
-                />
+                <img width="100%" src="./img/1.jpg" ref={primaryImgRef} />
               </div>
               <div className="screenshot_showcase_itemname">random</div>
               <div className="screenshot_showcase_stats"></div>
@@ -28,8 +31,8 @@ export default function ArtworkPanel() {
                   <img
                     width="100%"
                     style={{ maxWidth: "100px" }}
-                    src={ImageHolder.ArtworkRightCol}
-                    id="rightColImg"
+                    src="./img/2.jpg"
+                    ref={rightColImgRef}
                   />
                 </a>
               </div>
@@ -41,7 +44,7 @@ export default function ArtworkPanel() {
                   <img
                     width="100%"
                     style={{ maxWidth: "100px" }}
-                    src={ImageHolder.ArtworkRightCol2}
+                    src="./img/3.jpg"
                   />
                 </a>
               </div>
@@ -53,7 +56,7 @@ export default function ArtworkPanel() {
                   <img
                     width="100%"
                     style={{ maxWidth: "100px" }}
-                    src={ImageHolder.ArtworkRightCol3}
+                    src="./img/4.jpg"
                   />
                 </a>
               </div> */}

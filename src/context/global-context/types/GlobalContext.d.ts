@@ -1,5 +1,3 @@
-import ArtworkPanelWrapper from "../../../classes/ArtworkPanelWrapper";
-
 type FileValues = {
   name: string;
   data: File | undefined;
@@ -21,10 +19,5 @@ type TGlobalContext =
         value: ActiveTabValues;
         set: (value: ActiveTabValues) => void;
       };
-      panels: {
-        artworkPanel: ArtworkPanelWrapper | null;
-        loadMedia: () => void; //TODO: Might need to make it async
-      };
-      statusPanel;
     }
   | undefined;

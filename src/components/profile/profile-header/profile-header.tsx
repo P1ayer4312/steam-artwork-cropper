@@ -1,7 +1,13 @@
-import ImageHolder from "../../../assets/ImageHolder";
+import { useRef, useState } from "react";
 import ProfileHeaderSummary from "./profile-header-summary/profile-header-summary";
+import getRandomIntInclusive from "../../../functions/getRandomIntInclusive";
 
 export default function ProfileHeader() {
+  const randomBadge = useRef<string>(
+    `lvl_${getRandomIntInclusive(1, 52) * 100} ` +
+      `lvl_plus_${getRandomIntInclusive(1, 9) * 10}`
+  );
+
   return (
     <>
       <div className="profile_header_bg">
@@ -15,11 +21,7 @@ export default function ProfileHeader() {
 
                 <div className="header_real_name ellipsis">
                   <bdi>(ง'̀-'́)ง</bdi>{" "}
-                  <img
-                    className="profile_flag"
-                    src={ImageHolder.CountryFlag}
-                    alt=""
-                  />{" "}
+                  <img className="profile_flag" src="./img/mk.gif" alt="" />{" "}
                   Macedonia, The Former Yugoslav Republic of
                 </div>
               </div>
@@ -27,9 +29,9 @@ export default function ProfileHeader() {
               <div className="playerAvatar profile_header_size online">
                 <div className="playerAvatarAutoSizeInner">
                   <div className="profile_avatar_frame">
-                    <img alt="" src={ImageHolder.ProfileImageFrame} />
+                    <img alt="" src="./img/profile_img_frame.png" />
                   </div>
-                  <img alt="" src={ImageHolder.ProfileImageFull} />
+                  <img alt="" src="./img/profile_img_full.jpg" />
                 </div>
               </div>
 
@@ -38,8 +40,10 @@ export default function ProfileHeader() {
                   <span className="persona_level_btn">
                     <div className="persona_name persona_level">
                       Level{" "}
-                      <div className="friendPlayerLevel lvl_100 lvl_plus_20">
-                        <span className="friendPlayerLevelNum">120</span>
+                      <div
+                        className={`friendPlayerLevel ${randomBadge.current}`}
+                      >
+                        <span className="friendPlayerLevelNum">4312</span>
                       </div>
                     </div>
                   </span>
@@ -53,7 +57,7 @@ export default function ProfileHeader() {
                       <div className="favorite_badge_icon">
                         <img
                           alt=""
-                          src={ImageHolder.BadgeIcon}
+                          src="./img/github_logo.png"
                           className="badge_icon small"
                         />
                       </div>

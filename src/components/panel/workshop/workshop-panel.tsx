@@ -1,6 +1,10 @@
-import ImageHolder from "../../../assets/ImageHolder";
+import { useEffect } from "react";
 
 export default function WorkshopPanel() {
+  useEffect(() => {
+    console.log("workshop panel");
+  });
+
   return (
     <>
       <div className="profile_customization">
@@ -17,7 +21,7 @@ export default function WorkshopPanel() {
                 <a href="#" title="1" className="">
                   <img
                     className="workshop_showcase_item_image"
-                    src={ImageHolder.WorkshopPlaceholders[0]}
+                    src="./img/1633912160_1_squid.gif"
                   />
                 </a>
               </div>
@@ -27,7 +31,7 @@ export default function WorkshopPanel() {
                 <a href="#" title="2" className="">
                   <img
                     className="workshop_showcase_item_image"
-                    src={ImageHolder.WorkshopPlaceholders[1]}
+                    src="./img/1633912160_2_squid.gif"
                   />
                 </a>
               </div>
@@ -37,7 +41,7 @@ export default function WorkshopPanel() {
                 <a href="#" title="3" className="">
                   <img
                     className="workshop_showcase_item_image"
-                    src={ImageHolder.WorkshopPlaceholders[2]}
+                    src="./img/1633912161_3_squid.gif"
                   />
                 </a>
               </div>
@@ -47,7 +51,7 @@ export default function WorkshopPanel() {
                 <a href="#" title="4" className="">
                   <img
                     className="workshop_showcase_item_image"
-                    src={ImageHolder.WorkshopPlaceholders[3]}
+                    src="./img/1633912161_4_squid.gif"
                   />
                 </a>
               </div>
@@ -57,7 +61,7 @@ export default function WorkshopPanel() {
                 <a href="#" title="5" className="">
                   <img
                     className="workshop_showcase_item_image"
-                    src={ImageHolder.WorkshopPlaceholders[4]}
+                    src="./img/1633912163_5_squid.gif"
                   />
                 </a>
               </div>

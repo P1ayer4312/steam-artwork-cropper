@@ -6,3 +6,5 @@ export default defineConfig({
   plugins: [react()],
   base: "./",
 });
+
+// community.akamai.steamstatic.com -> DISABLE_LINK

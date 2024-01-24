@@ -1,10 +1,4 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
-import {
-  ActiveTabValues,
-  FileValues,
-  TGlobalContext,
-} from "./types/GlobalContext";
-import ArtworkPanelWrapper from "../../classes/ArtworkPanelWrapper";
 
 const GlobalContext = createContext<TGlobalContext>(undefined);
 
@@ -16,14 +10,6 @@ export function GlobalContextProvider(props: PropsWithChildren) {
     data: undefined,
   });
 
-  function loadMedia() {
-    if (activeTab == "artwork") {
-      if (GlobalContextValues?.panels.artworkPanel === null) {
-        GlobalContextValues.panels.artworkPanel = new ArtworkPanelWrapper();
-      }
-    }
-  }
-
   const GlobalContextValues: TGlobalContext = {
     status: {
       value: status,
@@ -31,15 +17,15 @@ export function GlobalContextProvider(props: PropsWithChildren) {
     },
     activeTab: {
       value: activeTab,
-      set: (value) => _setActiveTab(value),
+      set: (value) => {
+        _setActiveTab(value);
+      },
     },
     file: {
       value: file,
-      set: (value) => _setFile(value),
-    },
-    panels: {
-      artworkPanel: null,
-      loadMedia,
+      set: (value) => {
+        _setFile(value);
+      },
     },
   };
 
@@ -51,5 +37,5 @@ export function GlobalContextProvider(props: PropsWithChildren) {
 }
 
 export function useGlobalContext() {
-  return useContext(GlobalContext);
+  return useContext(GlobalContext)!;
 }

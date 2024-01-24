@@ -15,14 +15,10 @@ export default function InputImageButton() {
     if (files && files[0]) {
       const file = files[0];
 
-      globalContext?.file.set({
+      globalContext.file.set({
         data: file,
         name: file.name,
       });
-
-      globalContext?.status.set("Measuring, please wait...");
-      // Load media on selected file change
-      globalContext?.panels.loadMedia();
     }
   }
 
@@ -35,7 +31,7 @@ export default function InputImageButton() {
             Open file
           </button>
           <div className="input-image-name">
-            {globalContext?.file.value.name}
+            {globalContext.file.value.name}
           </div>
           <input
             type="file"

@@ -45,10 +45,14 @@
 
 .small-window-dialog-disabled-btn {
   border: 1px solid black;
-  width: fit-content;
-  height: fit-content;
   margin-left: auto;
   margin-top: auto;
   margin-right: 30px;
   margin-bottom: 20px;
+}
+
+.small-window-dialog-disabled-btn .old-button {
+  display: block;
+  width: 80px;
+  height: 20px;
 }

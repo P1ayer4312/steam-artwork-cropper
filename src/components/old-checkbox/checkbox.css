@@ -1,0 +1,31 @@
+.checkbox-wrapper label {
+  display: flex;
+  vertical-align: middle;
+  gap: 6px;
+}
+
+.checkbox-wrapper label .checkbox-box {
+  width: 10px;
+  height: 10px;
+  background-color: var(--gradient-background);
+  border: 2px solid var(--light-gray);
+  border-style: groove;
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+}
+.checkbox-wrapper label .checkbox-box img {
+  display: none;
+  width: 80%;
+}
+.checkbox-wrapper input:checked + label .checkbox-box img {
+  display: block;
+}
+
+.checkbox-wrapper label .checkbox-text {
+  margin: 0 0;
+  color: var(--white);
+}
+.checkbox-wrapper input:checked + label .checkbox-text {
+  color: var(--olive-green);
+}

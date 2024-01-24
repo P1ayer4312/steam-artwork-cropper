@@ -1,7 +1,6 @@
 import "./assets/css/buttons.css";
 import "./assets/css/old_buttons.css";
 import "./assets/css/globalv2.css";
-import "./assets/css/motiva_sans.css";
 import "./assets/css/profile.css";
 import "./assets/css/profilev2.css";
 import "./assets/css/shared_global.css";

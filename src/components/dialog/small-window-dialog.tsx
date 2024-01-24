@@ -1,6 +1,5 @@
 import { PropsWithChildren, useEffect, useRef } from "react";
 import "./small-window.dialog.css";
-import ImageHolder from "../../assets/ImageHolder";
 
 export default function SmallWindowDialog(props: PropsWithChildren) {
   const smallWindowDialogRef = useRef<HTMLDivElement | null>(null);
@@ -23,7 +22,7 @@ export default function SmallWindowDialog(props: PropsWithChildren) {
       <div className="small-window-dialog no-select" ref={smallWindowDialogRef}>
         <div className="small-window-dialog-window">
           <div className="small-window-dialog-window-title">
-            <img src={ImageHolder.SteamLogoDisconnect} alt="" />
+            <img src="./img/steam-logo-disconnect.jpg" alt="" />
             <span>Disconnected</span>
           </div>
           <div className="small-window-dialog-window-body">

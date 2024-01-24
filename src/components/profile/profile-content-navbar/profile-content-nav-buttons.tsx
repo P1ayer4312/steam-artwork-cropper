@@ -3,8 +3,8 @@ import { useGlobalContext } from "../../../context/global-context/GlobalContext"
 
 export default function ProfileContentNavButtons() {
   const globalContext = useGlobalContext();
-  const activeTab = globalContext?.activeTab;
-  const status = globalContext?.status.value;
+  const activeTab = globalContext.activeTab;
+  const status = globalContext.status.value;
 
   return (
     <>
