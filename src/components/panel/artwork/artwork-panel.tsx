@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
+import { useArtworkShowcaseContext } from "../../../context/showcase-context/ArtworkShowcaseContext";
 
 export default function ArtworkPanel() {
   const primaryImgRef = useRef<HTMLImageElement | null>(null);
   const rightColImgRef = useRef<HTMLImageElement | null>(null);
+  const artworkContext = useArtworkShowcaseContext();
 
   useEffect(() => {
     console.log("artwork panel");
@@ -36,6 +38,10 @@ export default function ArtworkPanel() {
                   />
                 </a>
               </div>
+              {/* 
+                In case we decide to do something with the other images,
+                we leave this commented out for now 
+              */}
               {/* <div className="screenshot_showcase_smallscreenshot showcase_slot">
                 <a
                   className="screenshot_showcase_screenshot modalContentLink"

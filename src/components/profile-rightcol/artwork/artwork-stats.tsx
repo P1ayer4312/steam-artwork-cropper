@@ -3,9 +3,7 @@ import Checkbox from "../../old-checkbox/checkbox";
 
 export default function ArtworkStats() {
   const checkboxRef = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    console.log(checkboxRef.current.checked);
-  });
+
   return (
     <div className="profile_rightcol">
       <div className="responsive_status_info">

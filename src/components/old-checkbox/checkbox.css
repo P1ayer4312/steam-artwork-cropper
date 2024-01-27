@@ -8,12 +8,16 @@
   width: 10px;
   height: 10px;
   background-color: var(--gradient-background);
-  border: 2px solid var(--light-gray);
-  border-style: groove;
+  border: 2px solid var(--checkbox-border-dark);
+  border-radius: 2px;
   display: flex;
   justify-content: center;
   vertical-align: middle;
 }
+.checkbox-wrapper input:checked + label .checkbox-box {
+  border-color: var(--checkbox-border-light);
+}
+
 .checkbox-wrapper label .checkbox-box img {
   display: none;
   width: 80%;

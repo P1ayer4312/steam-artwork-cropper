@@ -420,7 +420,7 @@ body.Steam3000Theme .profile_rightcol {
   outline: 2px dotted #e6c333;
   box-shadow: 4px 4px #20d038;
   background: black;
-  border-radius: 0px;
+  /* border-radius: 0px; */
 }
 
 body.Steam3000Theme .profile_header_bg_texture,
@@ -1107,7 +1107,7 @@ body.profile_page.flat_page #footer_spacer {
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(20px);
   padding: 10px;
-  border-radius: 3px;
+  /* border-radius: 3px; */
   width: 268px;
   float: right;
 }
@@ -1129,7 +1129,7 @@ body.profile_page.flat_page #footer_spacer {
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(20px);
-  border-radius: 3px;
+  /* border-radius: 3px; */
   padding: 0px 0px 0px 0px;
   margin-bottom: 12px;
   font-size: 13px;
@@ -1142,7 +1142,7 @@ body.profile_page.flat_page #footer_spacer {
 
 .profile_customization_block {
   position: relative;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   padding: 20px 10px 11px 10px;
   margin-bottom: 0px;
   font-size: 13px;
@@ -1183,7 +1183,7 @@ body.profile_page.flat_page #footer_spacer {
 
 .myart .profile_customization_block {
   position: relative;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   padding: 15px 10px 11px 10px;
   margin-bottom: 0px;
   font-size: 13px;

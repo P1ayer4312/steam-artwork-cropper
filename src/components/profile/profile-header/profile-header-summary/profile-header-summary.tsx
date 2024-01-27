@@ -12,14 +12,6 @@ export default function ProfileHeaderSummary() {
         </div>
         <div className="header_real_name_spacer">&nbsp;</div>
         <div className="profile_summary noexpand">
-          {/* <div className="bb_h3">
-            <b>
-              Trade Link:{" "}
-              <a className="bb_link" href="#" target="_blank" rel="">
-                Click here
-              </a>
-            </b>
-          </div> */}
           <InputImageButton />
         </div>
         <div className="profile_summary_footer" style={{ display: "none" }}>

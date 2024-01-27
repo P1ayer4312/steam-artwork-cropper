@@ -1,7 +1,7 @@
 /* Values that override or extend present styles */
 
 * {
-  border-radius: unset !important;
+  border-radius: unset;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
@@ -21,9 +21,12 @@ body.SteamGreenTheme {
   --gradient-background: #4d5744;
   --dark-green-background: #3d4638;
   --dark-slider-background: #1f1f1d;
-  --olive-green: #948930;
+  --light-green: #9faa96;
+  --olive-green: #c6b251;
   --light-gray: #848f7e;
   --white: #ebebeb;
+  --checkbox-border-dark: #696c5b;
+  --checkbox-border-light: #7f8875;
 }
 
 /* Disable profile gradient*/
