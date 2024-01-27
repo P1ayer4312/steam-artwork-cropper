@@ -1,32 +1,26 @@
+import useGlobalStore from "../../../store/useGlobalStore";
 import "./profile-content-nav-buttons.css";
-import { useGlobalContext } from "../../../context/global-context/GlobalContext";
 
 export default function ProfileContentNavButtons() {
-  const globalContext = useGlobalContext();
-  const activeTab = globalContext.activeTab;
-  const status = globalContext.status.value;
+  const { activeTab, setActiveTab, status } = useGlobalStore();
 
   return (
     <>
       <div className="profile_content_nav_button_wrapper">
         <div
           className={`profile_content_nav_button no-select ${
-            activeTab?.value == "artwork"
-              ? "profile_content_nav_button_active"
-              : ""
+            activeTab == "artwork" ? "profile_content_nav_button_active" : ""
           }`}
-          onClick={() => activeTab?.set("artwork")}
+          onClick={() => setActiveTab("artwork")}
         >
           <span>Artwork Showcase</span>
           <div className="profile_content_nav_clear"></div>
         </div>
         <div
           className={`profile_content_nav_button no-select ${
-            activeTab?.value == "workshop"
-              ? "profile_content_nav_button_active"
-              : ""
+            activeTab == "workshop" ? "profile_content_nav_button_active" : ""
           }`}
-          onClick={() => activeTab?.set("workshop")}
+          onClick={() => setActiveTab("workshop")}
         >
           <span>Workshop Showcase</span>
           <div className="profile_content_nav_clear"></div>

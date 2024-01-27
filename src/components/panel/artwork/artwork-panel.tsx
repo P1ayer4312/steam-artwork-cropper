@@ -1,10 +1,8 @@
 import { useEffect, useRef } from "react";
-import { useArtworkShowcaseContext } from "../../../context/showcase-context/ArtworkShowcaseContext";
 
 export default function ArtworkPanel() {
-  const primaryImgRef = useRef<HTMLImageElement | null>(null);
-  const rightColImgRef = useRef<HTMLImageElement | null>(null);
-  const artworkContext = useArtworkShowcaseContext();
+  const primaryImgRef = useRef<HTMLImageElement>(null);
+  const rightColImgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     console.log("artwork panel");

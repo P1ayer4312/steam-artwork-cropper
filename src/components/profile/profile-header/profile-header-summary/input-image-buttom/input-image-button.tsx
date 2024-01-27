@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import "./input-image-button.css";
-import { useGlobalContext } from "../../../../../context/global-context/GlobalContext";
+import useGlobalStore from "../../../../../store/useGlobalStore";
 
 export default function InputImageButton() {
-  const inputFileRef = useRef<HTMLInputElement | null>(null);
-  const globalContext = useGlobalContext();
+  const inputFileRef = useRef<HTMLInputElement>(null);
+  const { file, setFile } = useGlobalStore();
 
   function onOpenFileButtonClick() {
     inputFileRef.current?.click();
@@ -15,9 +15,9 @@ export default function InputImageButton() {
     if (files && files[0]) {
       const file = files[0];
 
-      globalContext.file.set({
-        data: file,
+      setFile({
         name: file.name,
+        data: file,
       });
     }
   }
@@ -30,9 +30,7 @@ export default function InputImageButton() {
           <button className="old-button" onClick={onOpenFileButtonClick}>
             Open file
           </button>
-          <div className="input-image-name">
-            {globalContext.file.value.name}
-          </div>
+          <div className="input-image-name">{file.name}</div>
           <input
             type="file"
             ref={inputFileRef}

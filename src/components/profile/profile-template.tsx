@@ -1,16 +1,15 @@
 // Main component for the Steam profile
 
-import { useGlobalContext } from "../../context/global-context/GlobalContext";
+import useGlobalStore from "../../store/useGlobalStore";
 import ArtworkPanel from "../panel/artwork/artwork-panel";
 import WorkshopPanel from "../panel/workshop/workshop-panel";
 import ArtworkStats from "../profile-rightcol/artwork/artwork-stats";
 import ProfileContentNavButtons from "./profile-content-navbar/profile-content-nav-buttons";
 import ProfileHeader from "./profile-header/profile-header";
-import "./profile-templace.css";
+import "./profile-template.css";
 
 export default function Profile() {
-  const globalContext = useGlobalContext();
-  const activeTab = globalContext.activeTab.value;
+  const { activeTab } = useGlobalStore();
 
   return (
     <>
