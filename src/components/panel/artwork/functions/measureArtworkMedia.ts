@@ -4,15 +4,14 @@ import getComputedValueFor from "../../../../functions/getComputedValueFor";
 export default async function measureArtworkMedia(
   primaryImg: HTMLImageElement,
   rightColImg: HTMLImageElement,
-  file: FileData,
-  rightColImgAnchor: HTMLAnchorElement
+  file: FileData
 ): Promise<void> {
   return await new Promise((resolve) => {
     /**
      * TODO: Some resolutions are not displayed correctly, needs to be checked
      * TODO: Also code refactor
      */
-    const steamHeight = Math.round((file.height * 613) / file.width);
+    const steamHeight = Math.round((file.height * 617) / file.width);
     const primaryImgWidth = Math.round((file.height * 508) / steamHeight);
     const rightColImgWidth = Math.round((file.height * 102) / steamHeight);
 
@@ -43,9 +42,8 @@ export default async function measureArtworkMedia(
         getComputedValueFor(rightColImg, "height") as number
       );
 
+      console.log(primaryImgHeight, rightColImgHeight);
       if (primaryImgHeight !== rightColImgHeight) {
-        console.log(primaryImgHeight, rightColImgHeight);
-
         if (rightColImgHeight < primaryImgHeight) {
           primaryImgCanvas.increaseWidth();
           rightColImgCanvas.decreaseWidth();
@@ -53,8 +51,6 @@ export default async function measureArtworkMedia(
           primaryImgCanvas.decreaseWidth();
         }
       } else {
-        console.log(primaryImgHeight, rightColImgHeight);
-        // compareHeights();
         primaryImg.removeEventListener("load", checkResolutions);
         displayImages();
       }

@@ -5,7 +5,6 @@ import measureArtworkMedia from "./functions/measureArtworkMedia";
 export default function ArtworkPanel() {
   const primaryImgRef = useRef<HTMLImageElement>(null);
   const rightColImgRef = useRef<HTMLImageElement>(null);
-  const rightColImgAnchorRef = useRef<HTMLAnchorElement>(null);
   const { file, artwork, setArtwork, setStatus } = useGlobalStore();
 
   // Used as an event listener for triggering image measurement
@@ -18,8 +17,7 @@ export default function ArtworkPanel() {
         await measureArtworkMedia(
           primaryImgRef.current!,
           rightColImgRef.current!,
-          file,
-          rightColImgAnchorRef.current!
+          file
         );
 
         // setArtwork({
@@ -30,7 +28,7 @@ export default function ArtworkPanel() {
         console.log("loadImage()");
       }
     })();
-  }, [file, artwork.isMeasured, setArtwork]);
+  }, [file, artwork.isMeasured, setArtwork, setStatus]);
 
   return (
     <>
@@ -55,7 +53,6 @@ export default function ArtworkPanel() {
                 <a
                   className="screenshot_showcase_screenshot modalContentLink"
                   href="#"
-                  ref={rightColImgAnchorRef}
                 >
                   <img
                     width="100%"

@@ -27,6 +27,7 @@
 
 .profile_content_nav_clear {
   position: absolute;
+  z-index: 1;
   width: 100%;
   height: 4px;
   left: 0px;

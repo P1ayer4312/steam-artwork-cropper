@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Checkbox from "../../old-checkbox/checkbox";
 
 export default function ArtworkStats() {
