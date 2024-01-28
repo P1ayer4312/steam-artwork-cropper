@@ -1,4 +1,4 @@
-type TMediaFileData = {
+type MediaFileData = {
   dataUrl: string;
   width: number;
   height: number;
@@ -6,7 +6,7 @@ type TMediaFileData = {
 
 export default async function parseMediaFile(
   file: File
-): Promise<TMediaFileData> {
+): Promise<MediaFileData> {
   return await new Promise((resolve, reject) => {
     const tempImage = new Image();
     const imgObjectUrl = URL.createObjectURL(file);
@@ -17,7 +17,7 @@ export default async function parseMediaFile(
         dataUrl: imgObjectUrl,
         width: tempImage.width,
         height: tempImage.height,
-      } as TMediaFileData);
+      } as MediaFileData);
     };
 
     tempImage.src = imgObjectUrl;

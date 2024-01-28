@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import ProfileHeaderSummary from "./profile-header-summary/profile-header-summary";
 import getRandomIntInclusive from "../../../functions/getRandomIntInclusive";
 

@@ -1,6 +1,9 @@
 type FileData = {
   name: string;
   data: File | undefined;
+  dataUrl: string | undefined;
+  width: number;
+  height: number;
 };
 
 type FileDefs = {
@@ -20,4 +23,7 @@ type ActiveTabDefs = {
   setActiveTab: (value: ActiveTabValues) => void;
 };
 
-type GlobalStoreValues = FileDefs & StatusDefs & ActiveTabDefs;
+type GlobalStoreValues = FileDefs &
+  StatusDefs &
+  ActiveTabDefs &
+  ArtworkShowcaseDefs;

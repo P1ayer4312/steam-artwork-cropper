@@ -1,12 +1,36 @@
 import { useEffect, useRef } from "react";
+import useGlobalStore from "../../../store/useGlobalStore";
+import measureArtworkMedia from "./functions/measureArtworkMedia";
 
 export default function ArtworkPanel() {
   const primaryImgRef = useRef<HTMLImageElement>(null);
   const rightColImgRef = useRef<HTMLImageElement>(null);
+  const rightColImgAnchorRef = useRef<HTMLAnchorElement>(null);
+  const { file, artwork, setArtwork, setStatus } = useGlobalStore();
 
+  // Used as an event listener for triggering image measurement
+  // and loading it on tab change
   useEffect(() => {
-    console.log("artwork panel");
-  });
+    (async () => {
+      if (!artwork.isMeasured && file.data) {
+        // Pass the image elements to be used for the measurement
+        setStatus("Measuring, please wait....");
+        await measureArtworkMedia(
+          primaryImgRef.current!,
+          rightColImgRef.current!,
+          file,
+          rightColImgAnchorRef.current!
+        );
+
+        // setArtwork({
+        //   isMeasured: true,
+        // });
+        setStatus("Done");
+      } else {
+        console.log("loadImage()");
+      }
+    })();
+  }, [file, artwork.isMeasured, setArtwork]);
 
   return (
     <>
@@ -17,7 +41,11 @@ export default function ArtworkPanel() {
           <div className="screenshot_showcase">
             <div className="screenshot_showcase_primary showcase_slot">
               <div className="screenshot_showcase_screenshot modalContentLink">
-                <img width="100%" src="./img/1.jpg" ref={primaryImgRef} />
+                <img
+                  width="100%"
+                  src={artwork.imageLinks.primary}
+                  ref={primaryImgRef}
+                />
               </div>
               <div className="screenshot_showcase_itemname">random</div>
               <div className="screenshot_showcase_stats"></div>
@@ -27,11 +55,12 @@ export default function ArtworkPanel() {
                 <a
                   className="screenshot_showcase_screenshot modalContentLink"
                   href="#"
+                  ref={rightColImgAnchorRef}
                 >
                   <img
                     width="100%"
                     style={{ maxWidth: "100px" }}
-                    src="./img/2.jpg"
+                    src={artwork.imageLinks.rightCol}
                     ref={rightColImgRef}
                   />
                 </a>

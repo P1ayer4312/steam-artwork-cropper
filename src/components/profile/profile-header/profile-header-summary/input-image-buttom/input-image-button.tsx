@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
+import { useRef, ChangeEvent } from "react";
 import "./input-image-button.css";
 import useGlobalStore from "../../../../../store/useGlobalStore";
+import parseMediaFile from "../../../../../functions/parseMediaFile";
 
 export default function InputImageButton() {
   const inputFileRef = useRef<HTMLInputElement>(null);
@@ -10,14 +11,17 @@ export default function InputImageButton() {
     inputFileRef.current?.click();
   }
 
-  function onInputFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+  async function onInputFileChange(event: ChangeEvent<HTMLInputElement>) {
     const files = event.currentTarget.files;
     if (files && files[0]) {
       const file = files[0];
-
+      const mediaData = await parseMediaFile(file);
       setFile({
         name: file.name,
         data: file,
+        dataUrl: mediaData.dataUrl,
+        height: mediaData.height,
+        width: mediaData.width,
       });
     }
   }
