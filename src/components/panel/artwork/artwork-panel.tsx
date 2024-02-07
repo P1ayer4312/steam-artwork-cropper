@@ -14,21 +14,22 @@ export default function ArtworkPanel() {
       if (!artwork.isMeasured && file.data) {
         // Pass the image elements to be used for the measurement
         setStatus("Measuring, please wait....");
-        await measureArtworkMedia(
+        const measuredData = await measureArtworkMedia(
           primaryImgRef.current!,
           rightColImgRef.current!,
           file
         );
 
-        // setArtwork({
-        //   isMeasured: true,
-        // });
+        const data = {
+          isMeasured: true,
+          ...measuredData,
+        };
+
+        setArtwork(data);
         setStatus("Done");
-      } else {
-        console.log("loadImage()");
       }
     })();
-  }, [file, artwork.isMeasured, setArtwork, setStatus]);
+  }, [file, artwork.isMeasured, setArtwork, setStatus, artwork]);
 
   return (
     <>
@@ -45,22 +46,19 @@ export default function ArtworkPanel() {
                   ref={primaryImgRef}
                 />
               </div>
-              <div className="screenshot_showcase_itemname">random</div>
+              <div className="screenshot_showcase_itemname"> </div>
               <div className="screenshot_showcase_stats"></div>
             </div>
             <div className="screenshot_showcase_rightcol">
               <div className="screenshot_showcase_smallscreenshot showcase_slot">
-                <a
-                  className="screenshot_showcase_screenshot modalContentLink"
-                  href="#"
-                >
+                <div className="screenshot_showcase_screenshot modalContentLink">
                   <img
                     width="100%"
                     style={{ maxWidth: "100px" }}
                     src={artwork.imageLinks.rightCol}
                     ref={rightColImgRef}
                   />
-                </a>
+                </div>
               </div>
               {/* 
                 In case we decide to do something with the other images,
@@ -90,12 +88,9 @@ export default function ArtworkPanel() {
                   />
                 </a>
               </div> */}
-              <a
-                className="screenshot_showcase_smallscreenshot screenshot_count"
-                href="#"
-              >
+              <div className="screenshot_showcase_smallscreenshot screenshot_count">
                 <div className="screenshot_showcase_screenshot">+ 1</div>
-              </a>
+              </div>
             </div>
             <div style={{ clear: "both" }}></div>
           </div>

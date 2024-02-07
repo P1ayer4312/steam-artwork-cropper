@@ -1,3 +1,5 @@
+import { ArtworkShowcaseDefs } from "./artworkShowcaseData";
+
 type FileData = {
   name: string;
   data: File | undefined;
@@ -21,6 +23,7 @@ type ActiveTabValues = "artwork" | "workshop";
 type ActiveTabDefs = {
   activeTab: ActiveTabValues;
   setActiveTab: (value: ActiveTabValues) => void;
+  reset: () => void;
 };
 
 type GlobalStoreValues = FileDefs &

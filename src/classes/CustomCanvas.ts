@@ -1,5 +1,3 @@
-type ImageType = "image/jpeg" | "image/png";
-
 export default class CustomCanvas {
   canvas: HTMLCanvasElement;
   canvasCtx: CanvasRenderingContext2D;
@@ -59,7 +57,12 @@ export default class CustomCanvas {
     this.canvas.height = h;
   }
 
-  toDataURL(type: ImageType = "image/jpeg", quality: number = 0.1) {
+  /**
+   *
+   * @param type "image/jpeg" | "image/png"
+   * @param quality
+   */
+  toDataURL(type?: string, quality: number = 0.1) {
     return this.canvas.toDataURL(type, quality);
   }
 
@@ -98,17 +101,7 @@ export default class CustomCanvas {
     this.displayCanvasToImg();
   }
 
-  // increaseHeight() {
-  //   this.canvas.height += 1;
-  //   this.displayCanvasToImg();
-  // }
-
-  // decreaseHeight() {
-  //   this.canvas.height -= 1;
-  //   this.displayCanvasToImg();
-  // }
-
-  displayCanvasToImg(type: ImageType = "image/jpeg", quality: number = 0.1) {
+  displayCanvasToImg(type: string = "image/jpeg", quality: number = 0.1) {
     this.imageElement.src = this.toDataURL(type, quality);
   }
 }

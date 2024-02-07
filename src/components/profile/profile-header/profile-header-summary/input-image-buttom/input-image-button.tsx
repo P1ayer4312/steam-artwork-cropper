@@ -5,7 +5,7 @@ import parseMediaFile from "../../../../../functions/parseMediaFile";
 
 export default function InputImageButton() {
   const inputFileRef = useRef<HTMLInputElement>(null);
-  const { file, setFile } = useGlobalStore();
+  const { file, setFile, reset } = useGlobalStore();
 
   function onOpenFileButtonClick() {
     inputFileRef.current?.click();
@@ -23,6 +23,8 @@ export default function InputImageButton() {
         height: mediaData.height,
         width: mediaData.width,
       });
+
+      reset();
     }
   }
 

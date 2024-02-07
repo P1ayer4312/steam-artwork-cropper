@@ -1,0 +1,28 @@
+.options-table {
+  margin-bottom: 10px;
+}
+
+.options-table-head {
+  color: var(--olive-green);
+  border-bottom: red;
+  font-size: 13px;
+}
+.options-table-head-key {
+  width: 150px;
+}
+.options-table-head-value {
+  width: 100px;
+}
+
+.options-table-line {
+  border-top: 1px solid var(--dark-slider-background);
+}
+
+.options-table-body {
+  color: var(--white);
+  font-size: 16px;
+  font-weight: lighter;
+}
+.options-table-body tr td {
+  padding: 5px 0;
+}

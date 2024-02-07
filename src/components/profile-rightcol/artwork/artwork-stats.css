@@ -1,0 +1,9 @@
+.artwork-stats-dl-btn {
+  display: flex;
+  width: 246px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  font-weight: bolder;
+}
