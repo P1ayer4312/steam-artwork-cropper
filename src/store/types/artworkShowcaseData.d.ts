@@ -6,7 +6,6 @@ export type Resolution = {
 export type ArtworkShowcaseData = {
   isLoaded: boolean;
   isMeasured: boolean;
-  isOriginalResized: boolean;
   imageLinks: {
     /** @default "./img/1.jpg" */
     primary: string;
@@ -21,7 +20,6 @@ export type ArtworkShowcaseData = {
     // original: number;
   };
   imageResolutions: {
-    original: Resolution;
     originalResized?: Resolution;
     primary: Resolution;
     rightCol: Resolution;
@@ -34,7 +32,6 @@ export type ArtworkShowcaseDefs = {
 };
 
 export type MeasuresData = {
-  isOriginalResized: boolean;
   imageLinks: {
     /** @default "./img/1.jpg" */
     primary: string;
@@ -42,7 +39,6 @@ export type MeasuresData = {
     rightCol: string;
   };
   imageResolutions: {
-    original: Resolution;
     originalResized?: Resolution;
     primary: Resolution;
     rightCol: Resolution;

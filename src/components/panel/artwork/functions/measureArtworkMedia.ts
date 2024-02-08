@@ -1,7 +1,10 @@
 import CustomCanvas from "../../../../classes/CustomCanvas";
 import getComputedValueFor from "../../../../functions/getComputedValueFor";
 import getImageFileSize from "../../../../functions/getImageFileSize";
-import { MeasuresData } from "../../../../store/types/artworkShowcaseData";
+import {
+  MeasuresData,
+  Resolution,
+} from "../../../../store/types/artworkShowcaseData";
 import { FileData } from "../../../../store/types/useGlobalStore";
 
 export default async function measureArtworkMedia(
@@ -14,20 +17,41 @@ export default async function measureArtworkMedia(
      * TODO: Some resolutions are not displayed correctly, needs to be checked
      * TODO: Also code refactor
      */
-    const steamHeight = Math.round((file.height * 618) / file.width);
-    const primaryImgWidth = Math.round((file.height * 508) / steamHeight);
-    const rightColImgWidth = Math.round((file.height * 102) / steamHeight);
+
+    let fileWidth = file.width;
+    let fileHeight = file.height;
     let imgDataUrl: string = file.dataUrl!;
+    let originalResizedValues: Resolution | undefined = undefined;
+    const tempImg = new Image();
+    tempImg.src = imgDataUrl;
+
+    // Check if the image is too small for the panel and upscale it
+    if (tempImg.width < 618) {
+      fileWidth = file.width * 2;
+      fileHeight = file.height * 2;
+      const resizedImgCanvas = new CustomCanvas(null, fileWidth, fileHeight);
+      resizedImgCanvas.drawImage(tempImg, 0, 0, fileWidth, fileHeight);
+
+      tempImg.src = imgDataUrl = resizedImgCanvas.toDataURL();
+      originalResizedValues = {
+        width: fileWidth,
+        height: fileHeight,
+      };
+    }
+
+    const steamHeight = Math.round((fileHeight * 618) / fileWidth);
+    const primaryImgWidth = Math.round((fileHeight * 508) / steamHeight);
+    const rightColImgWidth = Math.round((fileHeight * 102) / steamHeight);
 
     const primaryImgCanvas = new CustomCanvas(
       primaryImg,
       primaryImgWidth,
-      file.height
+      fileHeight
     );
     const rightColImgCanvas = new CustomCanvas(
       rightColImg,
       rightColImgWidth,
-      file.height
+      fileHeight
     );
 
     primaryImg.src = primaryImgCanvas.toDataURL();
@@ -57,10 +81,7 @@ export default async function measureArtworkMedia(
     }
 
     function displayImages() {
-      const tempImg = new Image();
-      tempImg.src = imgDataUrl;
-
-      const rightColOffset = rightColImgCanvas.canvas.width - file.width;
+      const rightColOffset = rightColImgCanvas.canvas.width - fileWidth;
       primaryImgCanvas.drawImage(tempImg, 0, 0);
       rightColImgCanvas.drawImage(tempImg, rightColOffset, 0);
 
@@ -72,16 +93,11 @@ export default async function measureArtworkMedia(
       rightColImg.src = rightColImgDataUrl;
 
       const measuredData: MeasuresData = {
-        isOriginalResized: false,
         imageLinks: {
           primary: primaryImgDataUrl,
           rightCol: rightColImgDataUrl,
         },
         imageResolutions: {
-          original: {
-            width: tempImg.width,
-            height: tempImg.height,
-          },
           primary: {
             width: primaryImgCanvas.canvas.width,
             height: primaryImgCanvas.canvas.height,
@@ -90,6 +106,7 @@ export default async function measureArtworkMedia(
             width: rightColImgCanvas.canvas.width,
             height: rightColImgCanvas.canvas.height,
           },
+          originalResized: originalResizedValues,
         },
         imageSize: {
           primary: getImageFileSize(primaryImgDataUrl),

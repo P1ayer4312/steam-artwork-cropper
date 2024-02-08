@@ -17,12 +17,18 @@ export default function OptionsTable(props: OptionsTableProps) {
           </tr>
         </thead>
         <tbody className="options-table-body">
-          {props.tableBody.map((el, index) => (
-            <tr key={index}>
-              <td>{el.key}</td>
-              <td>{el.value}</td>
-            </tr>
-          ))}
+          {props.tableBody.map((el, index) => {
+            if (el.key && el.value) {
+              return (
+                <tr key={index}>
+                  <td>{el.key}</td>
+                  <td>{el.value}</td>
+                </tr>
+              );
+            }
+
+            return null;
+          })}
         </tbody>
         <tfoot>
           <tr>

@@ -1,10 +1,10 @@
 export default class CustomCanvas {
   canvas: HTMLCanvasElement;
   canvasCtx: CanvasRenderingContext2D;
-  imageElement: HTMLImageElement;
+  imageElement: HTMLImageElement | null;
 
   constructor(
-    imageElement: HTMLImageElement,
+    imageElement: HTMLImageElement | null,
     width: number = 1,
     height: number = 1,
     border: boolean = false
@@ -58,7 +58,6 @@ export default class CustomCanvas {
   }
 
   /**
-   *
    * @param type "image/jpeg" | "image/png"
    * @param quality
    */
@@ -102,6 +101,10 @@ export default class CustomCanvas {
   }
 
   displayCanvasToImg(type: string = "image/jpeg", quality: number = 0.1) {
-    this.imageElement.src = this.toDataURL(type, quality);
+    if (this.imageElement) {
+      this.imageElement.src = this.toDataURL(type, quality);
+    } else {
+      throw new Error("Image element not provided");
+    }
   }
 }

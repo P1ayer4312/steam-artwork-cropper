@@ -14,7 +14,11 @@ export default function ProfileHeader() {
         <div className="profile_header_bg_texture">
           <div className="profile_header">
             <div className="profile_header_content">
-              <div className="profile_header_centered_persona">
+              <a
+                href="https://steamcommunity.com/profiles/76561198065287239"
+                target="_blank"
+                className="profile_header_centered_persona"
+              >
                 <div className="persona_name" style={{ fontSize: "24px" }}>
                   <span className="actual_persona_name">P1ayer</span>
                 </div>
@@ -24,7 +28,7 @@ export default function ProfileHeader() {
                   <img className="profile_flag" src="./img/mk.gif" alt="" />{" "}
                   Macedonia, The Former Yugoslav Republic of
                 </div>
-              </div>
+              </a>
 
               <div className="playerAvatar profile_header_size online">
                 <div className="playerAvatarAutoSizeInner">

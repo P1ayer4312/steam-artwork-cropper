@@ -21,8 +21,22 @@ export default function ArtworkStats() {
           tableBody={[
             {
               key: "Original Image",
-              value: formatResolution(artwork.imageResolutions.original),
+              value: formatResolution({
+                width: file.width,
+                height: file.height,
+              }),
             },
+            artwork.imageResolutions.originalResized
+              ? {
+                  key: "Original Resized",
+                  value: formatResolution(
+                    artwork.imageResolutions.originalResized
+                  ),
+                }
+              : {
+                  key: undefined,
+                  value: undefined,
+                },
             {
               key: "Big Image",
               value: formatResolution(artwork.imageResolutions.primary),

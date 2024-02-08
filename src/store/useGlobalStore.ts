@@ -6,8 +6,8 @@ const useGlobalStore = create<GlobalStoreValues>()((set) => ({
     name: "No file chosen",
     data: undefined,
     dataUrl: undefined,
-    height: -1,
-    width: -1,
+    height: 0,
+    width: 0,
   },
   setFile: (value) => set({ file: value }),
 
@@ -20,7 +20,6 @@ const useGlobalStore = create<GlobalStoreValues>()((set) => ({
   artwork: {
     isLoaded: false,
     isMeasured: false,
-    isOriginalResized: false,
     imageLinks: {
       primary: "./img/1.jpg",
       rightCol: "./img/2.jpg",

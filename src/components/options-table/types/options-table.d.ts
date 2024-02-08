@@ -1,6 +1,6 @@
 type TableDataItem = {
-  key: string;
-  value: string;
+  key: string | undefined;
+  value: string | undefined;
 };
 
 export interface OptionsTableProps {
