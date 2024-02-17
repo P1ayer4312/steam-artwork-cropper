@@ -25,13 +25,7 @@ export default class CustomCanvas {
   //   temp.data.set(data);
   //   this.canvasCtx.putImageData(temp, 0, 0);
   // }
-  addCanvas(
-    canvasElement: HTMLCanvasElement,
-    left: number,
-    top: number,
-    width?: number,
-    height?: number
-  ) {
+  addCanvas(canvasElement: HTMLCanvasElement, left: number, top: number, width?: number, height?: number) {
     if (width && height) {
       this.canvasCtx.drawImage(canvasElement, left, top, width, height);
     } else {
@@ -41,12 +35,7 @@ export default class CustomCanvas {
 
   fillSolid(dx?: number, dy?: number, color: string = "black") {
     this.canvasCtx.fillStyle = color;
-    this.canvasCtx.fillRect(
-      0,
-      0,
-      dx ?? this.canvas.width,
-      dy ?? this.canvas.height
-    );
+    this.canvasCtx.fillRect(0, 0, dx ?? this.canvas.width, dy ?? this.canvas.height);
   }
 
   setWidth(w: number) {
@@ -100,11 +89,16 @@ export default class CustomCanvas {
     this.displayCanvasToImg();
   }
 
+  decreaseHeight(amount: number = 1) {
+    this.canvas.height -= amount;
+    this.displayCanvasToImg();
+  }
+
   displayCanvasToImg(type: string = "image/jpeg", quality: number = 0.1) {
     if (this.imageElement) {
       this.imageElement.src = this.toDataURL(type, quality);
     } else {
-      throw new Error("Image element not provided");
+      throw new Error("Image element is not provided");
     }
   }
 }

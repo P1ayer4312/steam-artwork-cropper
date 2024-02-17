@@ -4,6 +4,7 @@ import OptionsTable from "../../options-table/options-table";
 import "./artwork-stats.css";
 import downloadArtwork from "../../panel/artwork/functions/downloadArtwork";
 import useGlobalStore from "../../../store/useGlobalStore";
+import measureArtworkBottomRightSpace from "../../panel/artwork/functions/measureArtworkBottomRightSpace";
 
 function formatResolution(value: { width: number; height: number }) {
   return `${value.width} x ${value.height}`;
@@ -11,7 +12,13 @@ function formatResolution(value: { width: number; height: number }) {
 
 export default function ArtworkStats() {
   const checkboxRef = useRef<HTMLInputElement>(null);
-  const { artwork, file } = useGlobalStore();
+  const { artwork, file, setArtwork } = useGlobalStore();
+
+  console.log("artwork", artwork);
+
+  async function measureBottomSpace() {
+    await measureArtworkBottomRightSpace({ artwork, setArtwork });
+  }
 
   return (
     <div className="profile_rightcol">
@@ -56,7 +63,7 @@ export default function ArtworkStats() {
             },
           ]}
         />
-        <Checkbox id="testing" ref={checkboxRef}>
+        <Checkbox id="testing" ref={checkboxRef} onClick={measureBottomSpace}>
           Bottom right space
         </Checkbox>
 
@@ -66,6 +73,7 @@ export default function ArtworkStats() {
             const fileName = file.name;
             downloadArtwork(fileName);
           }}
+          disabled={file.data === undefined}
         >
           Download Images
         </button>

@@ -26,7 +26,4 @@ type ActiveTabDefs = {
   reset: () => void;
 };
 
-type GlobalStoreValues = FileDefs &
-  StatusDefs &
-  ActiveTabDefs &
-  ArtworkShowcaseDefs;
+type GlobalStoreValues = FileDefs & StatusDefs & ActiveTabDefs & ArtworkShowcaseDefs;

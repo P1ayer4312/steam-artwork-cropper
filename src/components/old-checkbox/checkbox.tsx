@@ -5,6 +5,7 @@ interface OldCheckboxProps extends PropsWithChildren {
   id: string;
   /** Resize the input element in px */
   size?: string;
+  onClick?: () => void;
 }
 
 const Checkbox = forwardRef<HTMLInputElement, OldCheckboxProps>(
@@ -22,10 +23,12 @@ const Checkbox = forwardRef<HTMLInputElement, OldCheckboxProps>(
         } as CSSProperties)
       : undefined;
 
+    // Everything is wrapped inside the <label> so when we click on it,
+    // we toggle the <input> element
     return (
       <div className="checkbox-wrapper no-select">
         <input type="checkbox" id={props.id} ref={ref} hidden />
-        <label htmlFor={props.id}>
+        <label htmlFor={props.id} onClick={props.onClick}>
           <div className="checkbox-box" style={checkBoxSize}>
             <img src="./img/check.svg" alt="" />
           </div>

@@ -2,9 +2,9 @@ import JSZip from "jszip";
 import download from "downloadjs";
 
 export default async function downloadArtwork(
-  imgName: string,
-  primaryImgDataUrl?: string,
-  rightColImgDataUrl?: string
+  imgName: string
+  // primaryImgDataUrl?: string,
+  // rightColImgDataUrl?: string
 ) {
   const zip = new JSZip();
   await zip.generateAsync({ type: "base64" }).then((content) => {

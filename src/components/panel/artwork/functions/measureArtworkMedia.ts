@@ -1,10 +1,7 @@
 import CustomCanvas from "../../../../classes/CustomCanvas";
 import getComputedValueFor from "../../../../functions/getComputedValueFor";
 import getImageFileSize from "../../../../functions/getImageFileSize";
-import {
-  MeasuresData,
-  Resolution,
-} from "../../../../store/types/artworkShowcaseData";
+import { MeasuresData, Resolution } from "../../../../store/types/artworkShowcaseData";
 import { FileData } from "../../../../store/types/useGlobalStore";
 
 export default async function measureArtworkMedia(
@@ -43,29 +40,20 @@ export default async function measureArtworkMedia(
     const primaryImgWidth = Math.round((fileHeight * 508) / steamHeight);
     const rightColImgWidth = Math.round((fileHeight * 102) / steamHeight);
 
-    const primaryImgCanvas = new CustomCanvas(
-      primaryImg,
-      primaryImgWidth,
-      fileHeight
-    );
-    const rightColImgCanvas = new CustomCanvas(
-      rightColImg,
-      rightColImgWidth,
-      fileHeight
-    );
+    const primaryImgCanvas = new CustomCanvas(primaryImg, primaryImgWidth, fileHeight);
+    const rightColImgCanvas = new CustomCanvas(rightColImg, rightColImgWidth, fileHeight);
+
+    primaryImgCanvas.fillSolid();
+    rightColImgCanvas.fillSolid();
 
     primaryImg.src = primaryImgCanvas.toDataURL();
     rightColImg.src = rightColImgCanvas.toDataURL();
 
     function checkResolutions() {
       // Measure current images on the DOM
-      const primaryImgHeight = Math.round(
-        getComputedValueFor(primaryImg, "height") as number
-      );
+      const primaryImgHeight = Math.round(getComputedValueFor(primaryImg, "height") as number);
 
-      const rightColImgHeight = Math.round(
-        getComputedValueFor(rightColImg, "height") as number
-      );
+      const rightColImgHeight = Math.round(getComputedValueFor(rightColImg, "height") as number);
 
       if (primaryImgHeight !== rightColImgHeight) {
         if (rightColImgHeight < primaryImgHeight) {

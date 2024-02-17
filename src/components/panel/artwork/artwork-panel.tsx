@@ -5,6 +5,7 @@ import measureArtworkMedia from "./functions/measureArtworkMedia";
 export default function ArtworkPanel() {
   const primaryImgRef = useRef<HTMLImageElement>(null);
   const rightColImgRef = useRef<HTMLImageElement>(null);
+  const rightColContainerRef = useRef<HTMLImageElement>(null);
   const { file, artwork, setArtwork, setStatus } = useGlobalStore();
 
   // Used as an event listener for triggering image measurement
@@ -14,11 +15,7 @@ export default function ArtworkPanel() {
       if (!artwork.isMeasured && file.data) {
         // Pass the image elements to be used for the measurement
         setStatus("Measuring, please wait....");
-        const measuredData = await measureArtworkMedia(
-          primaryImgRef.current!,
-          rightColImgRef.current!,
-          file
-        );
+        const measuredData = await measureArtworkMedia(primaryImgRef.current!, rightColImgRef.current!, file);
 
         const data = {
           isMeasured: true,
@@ -31,6 +28,17 @@ export default function ArtworkPanel() {
     })();
   }, [file, artwork.isMeasured, setArtwork, setStatus, artwork]);
 
+  useEffect(() => {
+    // Pass refs to panel elements
+    setArtwork({
+      panelElementRefs: {
+        primaryImg: primaryImgRef.current,
+        rightColImg: rightColImgRef.current,
+        rightColContainer: rightColContainerRef.current,
+      },
+    });
+  }, [setArtwork]);
+
   return (
     <>
       <div className="profile_customization myart">
@@ -40,16 +48,16 @@ export default function ArtworkPanel() {
           <div className="screenshot_showcase">
             <div className="screenshot_showcase_primary showcase_slot">
               <div className="screenshot_showcase_screenshot modalContentLink">
-                <img
-                  width="100%"
-                  src={artwork.imageLinks.primary}
-                  ref={primaryImgRef}
-                />
+                <img width="100%" src={artwork.imageLinks.primary} ref={primaryImgRef} />
               </div>
               <div className="screenshot_showcase_itemname"> </div>
               <div className="screenshot_showcase_stats"></div>
             </div>
-            <div className="screenshot_showcase_rightcol">
+            <div
+              className="screenshot_showcase_rightcol"
+              ref={rightColContainerRef}
+              // style={{ border: "1px solid red" }} //TODO: Remove this
+            >
               <div className="screenshot_showcase_smallscreenshot showcase_slot">
                 <div className="screenshot_showcase_screenshot modalContentLink">
                   <img
